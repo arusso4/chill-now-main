@@ -7,7 +7,6 @@
   NPM_FLAGS = "--no-optional"
   NPM_CONFIG_PRODUCTION = "false"
 
-# Force fresh builds
 [build.processing]
   skip_processing = false
   css = { bundle = true, minify = true }
@@ -22,23 +21,6 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
 
-# Clear cache on every build
-[build.processing]
-  skip_processing = false
-
-# Force fresh builds
-[build.processing.css]
-  bundle = true
-  minify = true
-
-[build.processing.js]
-  bundle = true
-  minify = true
-
-[build.processing.html]
-  pretty_urls = true
-
-# Clear cache headers
 [[headers]]
   for = "/assets/*"
   [headers.values]
