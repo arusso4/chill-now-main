@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chillNOW - Main Site Preview</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        :root {
+            --background: 225 15% 7%;
+            --foreground: 135 20% 95%;
+            --card: 225 25% 9%;
+            --card-foreground: 135 15% 92%;
+            --popover: 225 25% 9%;
+            --popover-foreground: 135 15% 92%;
+            --primary: 135 65% 55%;
+            --primary-foreground: 225 20% 5%;
+            --secondary: 225 20% 15%;
+            --secondary-foreground: 135 15% 88%;
+            --muted: 225 15% 12%;
+            --muted-foreground: 135 8% 65%;
+            --accent: 285 85% 65%;
+            --accent-foreground: 225 20% 5%;
+            --destructive: 0 84.2% 60.2%;
+            --destructive-foreground: 210 40% 98%;
+            --border: 225 15% 20%;
+            --input: 225 15% 15%;
+            --ring: 135 65% 55%;
+            --gradient-primary: linear-gradient(135deg, hsl(135 65% 55%), hsl(285 85% 65%));
+            --gradient-hero: linear-gradient(180deg, hsl(225 25% 9%) 0%, hsl(225 20% 12%) 100%);
+        }
+        
+        body {
+            background-color: hsl(var(--background));
+            color: hsl(var(--foreground));
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        .bg-gradient-primary {
+            background: var(--gradient-primary);
+        }
+        
+        .text-gradient-primary {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .bg-secondary\/30 {
+            background-color: hsl(var(--secondary) / 0.3);
+        }
+        
+        .border-border {
+            border-color: hsl(var(--border));
+        }
+        
+        .text-muted-foreground {
+            color: hsl(var(--muted-foreground));
+        }
+        
+        .text-primary {
+            color: hsl(var(--primary));
+        }
+        
+        .text-foreground {
+            color: hsl(var(--foreground));
+        }
+        
+        .hover\:text-primary:hover {
+            color: hsl(var(--primary));
+        }
+        
+        .transition-all {
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .transition-transform {
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .group:hover .group-hover\:scale-110 {
+            transform: scale(1.1);
+        }
+        
+        .group:hover .group-hover\:rotate-3 {
+            transform: rotate(3deg);
+        }
+        
+        .hover\:translate-x-1:hover {
+            transform: translateX(0.25rem);
+        }
+        
+        .group-hover\:font-medium {
+            font-weight: 500;
+        }
+        
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: .5;
+            }
+        }
+        
+        .mt-auto {
+            margin-top: auto;
+        }
+        
+        .flex-1 {
+            flex: 1 1 0%;
+        }
+        
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        .nav-link {
+            cursor: pointer;
+        }
+        
+        .nav-link:hover {
+            color: hsl(var(--primary));
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-card/50 backdrop-blur-sm border-b border-border sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
+                        <i data-lucide="leaf" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <span class="text-xl font-bold text-gradient-primary">chillNOW</span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <span class="nav-link text-sm font-medium" onclick="showPage('home')">Home</span>
+                    <span class="nav-link text-sm font-medium" onclick="showPage('blog')">Blog</span>
+                    <span class="nav-link text-sm font-medium" onclick="showPage('add-brand')">Add Brand</span>
+                    <span class="nav-link text-sm font-medium" onclick="showPage('marketplace')">Marketplace</span>
+                    <span class="nav-link text-sm font-medium" onclick="showPage('drive')">Drive</span>
+                    <span class="nav-link text-sm font-medium" onclick="showPage('testimonials')">Testimonials</span>
+                </div>
+                
+                <button class="bg-gradient-primary hover:bg-gradient-primary/90 px-4 py-2 rounded-lg text-sm font-medium">
+                    Join Waitlist
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Homepage -->
+    <div id="home" class="page active">
+        <div class="min-h-screen flex flex-col">
+            <!-- Hero Section -->
+            <section class="py-16 px-4 sm:px-6 bg-gradient-hero">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
+                        <span class="text-gradient-primary">Premium Cannabis Delivery</span>
+                    </h1>
+                    <p class="text-xl sm:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+                        Quality products, lightning-fast delivery, exceptional service.
+                    </p>
+                    <button class="bg-gradient-primary hover:bg-gradient-primary/90 px-8 py-4 rounded-lg text-lg font-medium">
+                        Get Started
+                    </button>
+                </div>
+            </section>
+
+            <!-- Value Proposition -->
+            <section class="py-16 px-4 sm:px-6">
+                <div class="max-w-4xl mx-auto">
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="text-center p-6 bg-card rounded-xl border border-border">
+                            <i data-lucide="zap" class="w-12 h-12 mx-auto mb-4 text-primary"></i>
+                            <h3 class="text-xl font-semibold mb-2">Lightning Fast</h3>
+                                                         <p class="text-muted-foreground">60-minute delivery guaranteed</p>
+                        </div>
+                        <div class="text-center p-6 bg-card rounded-xl border border-border">
+                            <i data-lucide="shield" class="w-12 h-12 mx-auto mb-4 text-primary"></i>
+                            <h3 class="text-xl font-semibold mb-2">100% Secure</h3>
+                            <p class="text-muted-foreground">Safe, legal, and compliant</p>
+                        </div>
+                        <div class="text-center p-6 bg-card rounded-xl border border-border">
+                            <i data-lucide="star" class="w-12 h-12 mx-auto mb-4 text-primary"></i>
+                            <h3 class="text-xl font-semibold mb-2">Premium Quality</h3>
+                            <p class="text-muted-foreground">Curated selection of top brands</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="bg-secondary/30 border-t border-border mt-auto" role="contentinfo">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                    <!-- Main Footer Content -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
+                        <!-- Brand Section -->
+                        <div class="lg:col-span-1">
+                            <div class="flex items-center space-x-2 mb-4">
+                                <div class="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
+                                    <i data-lucide="leaf" class="w-5 h-5 text-white"></i>
+                                </div>
+                                <span class="text-xl font-bold text-gradient-primary">chillNOW</span>
+                            </div>
+                            <p class="text-sm text-muted-foreground mb-4 leading-relaxed">
+                                Premium cannabis and wellness delivery. 
+                                Quality products, lightning-fast delivery, exceptional service.
+                            </p>
+                            <div class="flex items-center space-x-4 text-sm text-muted-foreground">
+                                <div class="flex items-center space-x-1">
+                                    <i data-lucide="shield" class="w-4 h-4"></i>
+                                    <span>100% Secure</span>
+                                </div>
+                                <div class="flex items-center space-x-1">
+                                    <i data-lucide="globe" class="w-4 h-4"></i>
+                                    <span>Legal Markets</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Company Section -->
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-2">
+                                <i data-lucide="building-2" class="w-5 h-5 text-primary"></i>
+                                <h3 class="font-semibold text-foreground">Company</h3>
+                            </div>
+                            <ul class="space-y-2">
+                                <li><span class="text-sm text-muted-foreground hover:text-primary transition-all duration-300 flex items-center space-x-2 group hover:translate-x-1">About Us</span></li>
+                                <li><span class="text-sm text-muted-foreground hover:text-primary transition-all duration-300 flex items-center space-x-2 group hover:translate-x-1">Careers</span></li>
+                                <li><span class="text-sm text-muted-foreground hover:text-primary transition-all duration-300 flex items-center space-x-2 group hover:translate-x-1">Blog</span></li>
+                                <li><span class="text-sm text-muted-foreground hover:text-primary transition-all duration-300 flex items-center space-x-2 group hover:translate-x-1">Press</span></li>
+                            </ul>
+                        </div>
+
+                        <!-- Support Section -->
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-2">
+                                <i data-lucide="help-circle" class="w-5 h-5 text-primary"></i>
+                                <h3 class="font-semibold text-foreground">Support</h3>
+                            </div>
+                            <ul class="space-y-2">
+                                <li><span class="text-sm text-muted-foreground hover:text-primary transition-all duration-300 flex items-center space-x-2 group hover:translate-x-1">Help Center</span></li>
+                                <li><span class="text-sm text-muted-foreground hover:text-primary transition-all duration-300 flex items-center space-x-2 group hover:translate-x-1">Contact Us</span></li>
+                                <li><span class="text-sm text-muted-foreground hover:text-primary transition-all duration-300 flex items-center space-x-2 group hover:translate-x-1">Terms of Service</span></li>
+                                <li><span class="text-sm text-muted-foreground hover:text-primary transition-all duration-300 flex items-center space-x-2 group hover:translate-x-1">Privacy Policy</span></li>
+                            </ul>
+                        </div>
+
+                        <!-- Get Started Section -->
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-2">
+                                <i data-lucide="plus" class="w-5 h-5 text-primary"></i>
+                                <h3 class="font-semibold text-foreground">Get Started</h3>
+                            </div>
+                            <ul class="space-y-2">
+                                <li>
+                                    <span class="text-sm text-muted-foreground hover:text-primary transition-all duration-300 flex items-center space-x-2 group hover:translate-x-1">
+                                        <i data-lucide="clock" class="w-4 h-4 group-hover:scale-110 transition-transform duration-300 group-hover:rotate-3"></i>
+                                        <span class="group-hover:font-medium transition-all duration-300">Join Waitlist</span>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="text-sm text-muted-foreground hover:text-primary transition-all duration-300 flex items-center space-x-2 group hover:translate-x-1">
+                                        <i data-lucide="car" class="w-4 h-4 group-hover:scale-110 transition-transform duration-300 group-hover:rotate-3"></i>
+                                        <span class="group-hover:font-medium transition-all duration-300">Become Driver</span>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="text-sm text-muted-foreground hover:text-primary transition-all duration-300 flex items-center space-x-2 group hover:translate-x-1">
+                                        <i data-lucide="store" class="w-4 h-4 group-hover:scale-110 transition-transform duration-300 group-hover:rotate-3"></i>
+                                        <span class="group-hover:font-medium transition-all duration-300">Add Brand</span>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="text-sm text-muted-foreground hover:text-primary transition-all duration-300 flex items-center space-x-2 group hover:translate-x-1">
+                                        <i data-lucide="building-2" class="w-4 h-4 group-hover:scale-110 transition-transform duration-300 group-hover:rotate-3"></i>
+                                        <span class="group-hover:font-medium transition-all duration-300">Marketplace</span>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Connect Section -->
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-2">
+                                <i data-lucide="message-circle" class="w-5 h-5 text-primary"></i>
+                                <h3 class="font-semibold text-foreground">Connect</h3>
+                            </div>
+                            <ul class="space-y-2">
+                                <li><span class="text-sm text-muted-foreground hover:text-primary transition-all duration-300 flex items-center space-x-2 group hover:translate-x-1">Instagram</span></li>
+                                <li><span class="text-sm text-muted-foreground hover:text-primary transition-all duration-300 flex items-center space-x-2 group hover:translate-x-1">Twitter</span></li>
+                                <li><span class="text-sm text-muted-foreground hover:text-primary transition-all duration-300 flex items-center space-x-2 group hover:translate-x-1">LinkedIn</span></li>
+                                <li>
+                                    <span class="text-sm text-muted-foreground hover:text-primary transition-all duration-300 flex items-center space-x-2 group hover:translate-x-1">
+                                        <i data-lucide="mail" class="w-4 h-4 group-hover:scale-110 transition-transform duration-300 group-hover:rotate-3"></i>
+                                        <span class="group-hover:font-medium transition-all duration-300">Email</span>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Section -->
+                    <div class="border-t border-border pt-8">
+                        <div class="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+                            <div class="text-sm text-muted-foreground text-center sm:text-left">
+                                <p>© 2024 chillNOW. All rights reserved.</p>
+                                <p class="mt-1 flex items-center justify-center sm:justify-start space-x-1">
+                                    <span>Made with</span>
+                                    <i data-lucide="heart" class="w-4 h-4 text-red-500 animate-pulse"></i>
+                                    <span>for chill vibes</span>
+                                </p>
+                            </div>
+                            
+                            <div class="flex items-center space-x-6 text-sm text-muted-foreground">
+                                <div class="flex items-center space-x-1">
+                                    <i data-lucide="users" class="w-4 h-4"></i>
+                                    <span>Trusted by thousands</span>
+                                </div>
+                                <div class="flex items-center space-x-1">
+                                    <i data-lucide="mail" class="w-4 h-4"></i>
+                                    <span>No spam • Unsubscribe anytime</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Add Your Brand Page -->
+    <div id="add-brand" class="page">
+        <div class="min-h-screen flex flex-col">
+            <main class="flex-1">
+                <!-- Hero Section -->
+                <section class="pt-24 pb-16 px-4 sm:px-6 bg-gradient-hero">
+                    <div class="max-w-4xl mx-auto text-center">
+                        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
+                            <span class="text-gradient-primary">Add Your Brand</span>
+                        </h1>
+                        <p class="text-xl sm:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+                            Join the most innovative cannabis and wellness delivery platform.
+                        </p>
+                        <button class="bg-gradient-primary hover:bg-gradient-primary/90 px-8 py-4 rounded-lg text-lg font-medium">
+                            Submit Your Brand
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Content Section -->
+                <section class="py-16 px-4 sm:px-6">
+                    <div class="max-w-4xl mx-auto">
+                        <div class="grid md:grid-cols-3 gap-8">
+                            <div class="text-center p-6 bg-card rounded-xl border border-border">
+                                <i data-lucide="trending-up" class="w-12 h-12 mx-auto mb-4 text-primary"></i>
+                                <h3 class="text-xl font-semibold mb-2">Rapid Growth</h3>
+                                <p class="text-muted-foreground">Access to a growing customer base</p>
+                            </div>
+                            <div class="text-center p-6 bg-card rounded-xl border border-border">
+                                <i data-lucide="shield" class="w-12 h-12 mx-auto mb-4 text-primary"></i>
+                                <h3 class="text-xl font-semibold mb-2">Compliance First</h3>
+                                <p class="text-muted-foreground">We handle all regulatory requirements</p>
+                            </div>
+                            <div class="text-center p-6 bg-card rounded-xl border border-border">
+                                <i data-lucide="zap" class="w-12 h-12 mx-auto mb-4 text-primary"></i>
+                                <h3 class="text-xl font-semibold mb-2">Fast Integration</h3>
+                                <p class="text-muted-foreground">Get live in 2-3 weeks</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Footer (same as above) -->
+            <footer class="bg-secondary/30 border-t border-border mt-auto" role="contentinfo">
+                <!-- Same footer content as above -->
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
+                        <!-- Brand Section -->
+                        <div class="lg:col-span-1">
+                            <div class="flex items-center space-x-2 mb-4">
+                                <div class="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
+                                    <i data-lucide="leaf" class="w-5 h-5 text-white"></i>
+                                </div>
+                                <span class="text-xl font-bold text-gradient-primary">chillNOW</span>
+                            </div>
+                            <p class="text-sm text-muted-foreground mb-4 leading-relaxed">
+                                Premium cannabis and wellness delivery.
+                            </p>
+                        </div>
+
+                        <!-- Get Started Section -->
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-2">
+                                <i data-lucide="plus" class="w-5 h-5 text-primary"></i>
+                                <h3 class="font-semibold text-foreground">Get Started</h3>
+                            </div>
+                            <ul class="space-y-2">
+                                <li>
+                                    <span class="text-sm text-muted-foreground hover:text-primary transition-all duration-300 flex items-center space-x-2 group hover:translate-x-1">
+                                        <i data-lucide="clock" class="w-4 h-4 group-hover:scale-110 transition-transform duration-300 group-hover:rotate-3"></i>
+                                        <span class="group-hover:font-medium transition-all duration-300">Join Waitlist</span>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="text-sm text-muted-foreground hover:text-primary transition-all duration-300 flex items-center space-x-2 group hover:translate-x-1">
+                                        <i data-lucide="car" class="w-4 h-4 group-hover:scale-110 transition-transform duration-300 group-hover:rotate-3"></i>
+                                        <span class="group-hover:font-medium transition-all duration-300">Become Driver</span>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="text-sm text-muted-foreground hover:text-primary transition-all duration-300 flex items-center space-x-2 group hover:translate-x-1">
+                                        <i data-lucide="store" class="w-4 h-4 group-hover:scale-110 transition-transform duration-300 group-hover:rotate-3"></i>
+                                        <span class="group-hover:font-medium transition-all duration-300">Add Brand</span>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="text-sm text-muted-foreground hover:text-primary transition-all duration-300 flex items-center space-x-2 group hover:translate-x-1">
+                                        <i data-lucide="building-2" class="w-4 h-4 group-hover:scale-110 transition-transform duration-300 group-hover:rotate-3"></i>
+                                        <span class="group-hover:font-medium transition-all duration-300">Marketplace</span>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Other sections... -->
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-2">
+                                <i data-lucide="building-2" class="w-5 h-5 text-primary"></i>
+                                <h3 class="font-semibold text-foreground">Company</h3>
+                            </div>
+                            <ul class="space-y-2">
+                                <li><span class="text-sm text-muted-foreground hover:text-primary transition-all duration-300">About Us</span></li>
+                                <li><span class="text-sm text-muted-foreground hover:text-primary transition-all duration-300">Careers</span></li>
+                                <li><span class="text-sm text-muted-foreground hover:text-primary transition-all duration-300">Blog</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-2">
+                                <i data-lucide="help-circle" class="w-5 h-5 text-primary"></i>
+                                <h3 class="font-semibold text-foreground">Support</h3>
+                            </div>
+                            <ul class="space-y-2">
+                                <li><span class="text-sm text-muted-foreground hover:text-primary transition-all duration-300">Help Center</span></li>
+                                <li><span class="text-sm text-muted-foreground hover:text-primary transition-all duration-300">Contact Us</span></li>
+                                <li><span class="text-sm text-muted-foreground hover:text-primary transition-all duration-300">Terms</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-2">
+                                <i data-lucide="message-circle" class="w-5 h-5 text-primary"></i>
+                                <h3 class="font-semibold text-foreground">Connect</h3>
+                            </div>
+                            <ul class="space-y-2">
+                                <li><span class="text-sm text-muted-foreground hover:text-primary transition-all duration-300">Instagram</span></li>
+                                <li><span class="text-sm text-muted-foreground hover:text-primary transition-all duration-300">Twitter</span></li>
+                                <li><span class="text-sm text-muted-foreground hover:text-primary transition-all duration-300">LinkedIn</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Section -->
+                    <div class="border-t border-border pt-8">
+                        <div class="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+                            <div class="text-sm text-muted-foreground text-center sm:text-left">
+                                <p>© 2024 chillNOW. All rights reserved.</p>
+                                <p class="mt-1 flex items-center justify-center sm:justify-start space-x-1">
+                                    <span>Made with</span>
+                                    <i data-lucide="heart" class="w-4 h-4 text-red-500 animate-pulse"></i>
+                                    <span>for chill vibes</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Other pages (simplified) -->
+    <div id="marketplace" class="page">
+        <div class="min-h-screen flex flex-col">
+            <main class="flex-1">
+                <section class="pt-24 pb-16 px-4 sm:px-6 bg-gradient-hero">
+                    <div class="max-w-4xl mx-auto text-center">
+                        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
+                            <span class="text-gradient-primary">Marketplace</span>
+                        </h1>
+                        <p class="text-xl sm:text-2xl text-muted-foreground mb-8">
+                            Sell through chillNOW
+                        </p>
+                    </div>
+                </section>
+            </main>
+            <!-- Same footer as above -->
+            <footer class="bg-secondary/30 border-t border-border mt-auto" role="contentinfo">
+                <!-- Footer content -->
+            </footer>
+        </div>
+    </div>
+
+    <div id="drive" class="page">
+        <div class="min-h-screen flex flex-col">
+            <main class="flex-1">
+                <section class="pt-24 pb-16 px-4 sm:px-6 bg-gradient-hero">
+                    <div class="max-w-4xl mx-auto text-center">
+                        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
+                            <span class="text-gradient-primary">Drive for chillNOW</span>
+                        </h1>
+                        <p class="text-xl sm:text-2xl text-muted-foreground mb-8">
+                            Get paid to deliver
+                        </p>
+                    </div>
+                </section>
+            </main>
+            <!-- Same footer as above -->
+            <footer class="bg-secondary/30 border-t border-border mt-auto" role="contentinfo">
+                <!-- Footer content -->
+            </footer>
+        </div>
+    </div>
+
+    <div id="blog" class="page">
+        <div class="min-h-screen flex flex-col">
+            <main class="flex-1">
+                <section class="pt-24 pb-16 px-4 sm:px-6 bg-gradient-hero">
+                    <div class="max-w-4xl mx-auto text-center">
+                        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
+                            <span class="text-gradient-primary">Blog</span>
+                        </h1>
+                        <p class="text-xl sm:text-2xl text-muted-foreground mb-8">
+                            Latest insights and updates
+                        </p>
+                    </div>
+                </section>
+            </main>
+            <!-- Same footer as above -->
+            <footer class="bg-secondary/30 border-t border-border mt-auto" role="contentinfo">
+                <!-- Footer content -->
+            </footer>
+        </div>
+    </div>
+
+    <div id="testimonials" class="page">
+        <div class="min-h-screen flex flex-col">
+            <main class="flex-1">
+                <section class="pt-24 pb-16 px-4 sm:px-6 bg-gradient-hero">
+                    <div class="max-w-4xl mx-auto text-center">
+                        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
+                            <span class="text-gradient-primary">Testimonials</span>
+                        </h1>
+                        <p class="text-xl sm:text-2xl text-muted-foreground mb-8">
+                            What our customers say
+                        </p>
+                    </div>
+                </section>
+            </main>
+            <!-- Same footer as above -->
+            <footer class="bg-secondary/30 border-t border-border mt-auto" role="contentinfo">
+                <!-- Footer content -->
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Page navigation
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+        }
+    </script>
+</body>
+</html> 
