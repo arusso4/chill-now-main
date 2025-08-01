@@ -177,6 +177,16 @@ const MobileNav = () => {
                       Shop
                     </Link>
                   </li>
+                  <li>
+                    <Link
+                      to="/limited-drops"
+                      className="block w-full text-left text-foreground hover:text-green-500 transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 rounded px-2 py-1 font-bold"
+                      onClick={closeMenu}
+                      role="menuitem"
+                    >
+                      Limited Drops
+                    </Link>
+                  </li>
                 </ul>
                 
                 {/* More Section */}

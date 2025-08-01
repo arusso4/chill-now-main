@@ -23,7 +23,8 @@ import {
   MessageCircle,
   Star,
   Zap,
-  Sparkles
+  Sparkles,
+  Flame
 } from "lucide-react";
 
 const Footer = () => {
@@ -58,7 +59,8 @@ const Footer = () => {
       icon: Plus,
       links: [
         { name: "Join Waitlist", href: "/coming-soon", icon: Clock },
-                        { name: "Become Driver", href: "/driver", icon: Car },
+        { name: "Limited Drops", href: "/limited-drops", icon: Flame },
+        { name: "Become Driver", href: "/driver", icon: Car },
         { name: "Add Brand", href: "/add-your-brand", icon: Store },
         { name: "Marketplace", href: "/marketplace#quiz-section", icon: Building2 }
       ]

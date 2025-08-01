@@ -19,6 +19,7 @@ import FAQ from "./pages/FAQ";
 import Safety from "./pages/Safety";
 import ReportIssue from "./pages/ReportIssue";
 import ComingSoon from "./pages/ComingSoon";
+import LimitedDrops from "./pages/LimitedDrops";
 import NotFound from "./pages/NotFound";
 import BuilderPage from "./pages/BuilderPage";
 
@@ -113,6 +114,11 @@ const App = () => {
             <Route path="/coming-soon" element={
               <RootLayout>
                 <ComingSoon />
+              </RootLayout>
+            } />
+            <Route path="/limited-drops" element={
+              <RootLayout>
+                <LimitedDrops />
               </RootLayout>
             } />
             {/* Builder.io dynamic pages */}

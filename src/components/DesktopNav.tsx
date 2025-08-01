@@ -77,6 +77,12 @@ const DesktopNav = () => {
               >
                 Shop
               </Link>
+              <Link 
+                to="/limited-drops"
+                className="text-foreground hover:text-green-500 transition-colors font-bold"
+              >
+                Limited Drops
+              </Link>
               
               {/* More Dropdown */}
               <div className="relative">
