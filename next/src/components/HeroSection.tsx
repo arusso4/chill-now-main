@@ -1,10 +1,11 @@
+"use client";
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Clock, Leaf, Flame, Sparkles, Play, Zap } from "lucide-react";
-import { useScrollToTop } from "@/hooks/useScrollToTop";
+import { useRouter } from "next/navigation";
 
 const HeroSection = () => {
-  const navigateWithScrollToTop = useScrollToTop();
+  const router = useRouter();
   
   const scrollToWhyChooseUs = () => {
     const element = document.getElementById('value');
@@ -69,7 +70,7 @@ const HeroSection = () => {
           <Button 
             size="lg" 
             className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-lg px-8 py-4 font-bold border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-            onClick={() => navigateWithScrollToTop('/coming-soon')}
+            onClick={() => router.push('/coming-soon')}
             aria-label="Join the waitlist for early access"
           >
             <Sparkles className="w-5 h-5 mr-2" />

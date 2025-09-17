@@ -2,14 +2,13 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { ChevronDown, Sparkles } from "lucide-react";
-import { useScrollToTop } from "@/hooks/useScrollToTop";
 
 const DesktopNav = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const pathname = usePathname();
-  const navigateWithScrollToTop = useScrollToTop();
+  const router = useRouter();
   const isHomePage = pathname === "/";
 
   const scrollToSection = (sectionId: string) => {
@@ -21,7 +20,7 @@ const DesktopNav = () => {
       }
     } else {
       // If on another page, navigate to homepage with section
-      navigate(`/#${sectionId}`);
+      router.push(`/#${sectionId}`);
       // Add a small delay to ensure the page loads before scrolling
       setTimeout(() => {
         const element = document.getElementById(sectionId);

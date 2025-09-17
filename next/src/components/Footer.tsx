@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { useScrollToTop } from "@/hooks/useScrollToTop";
 import { 
   Heart, 
   Leaf, 
@@ -30,7 +29,6 @@ import {
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const navigateWithScrollToTop = useScrollToTop();
 
   const footerSections = [
     {

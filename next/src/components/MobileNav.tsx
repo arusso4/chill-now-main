@@ -3,15 +3,14 @@ import React, { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Sparkles } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useScrollToTop } from "@/hooks/useScrollToTop";
+import { usePathname, useRouter } from "next/navigation";
 
 const MobileNav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
-  const navigateWithScrollToTop = useScrollToTop();
+  const router = useRouter();
   const isHomePage = pathname === "/";
 
   const toggleMenu = () => {
@@ -31,7 +30,7 @@ const MobileNav = () => {
       }
     } else {
       // If on another page, navigate to homepage with section
-      navigate(`/#${sectionId}`);
+      router.push(`/#${sectionId}`);
       // Add a small delay to ensure the page loads before scrolling
       setTimeout(() => {
         const element = document.getElementById(sectionId);
