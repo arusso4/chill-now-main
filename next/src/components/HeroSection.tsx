@@ -8,9 +8,11 @@ const HeroSection = () => {
   const router = useRouter();
   
   const scrollToWhyChooseUs = () => {
-    const element = document.getElementById('value');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (typeof window !== 'undefined') {
+      const element = document.getElementById('value');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
   

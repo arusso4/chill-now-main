@@ -24,9 +24,11 @@ const MobileNav = () => {
   const scrollToSection = (sectionId: string) => {
     if (isHomePage) {
       // If on homepage, scroll to section
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+      if (typeof window !== 'undefined') {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
       }
     } else {
       // If on another page, navigate to homepage with section
