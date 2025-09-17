@@ -159,7 +159,7 @@ const DesktopNav = () => {
                     </button>
                     <button
                       onClick={() => {
-                        router.push('/driver');
+                        router.push('/drive');
                         setIsDropdownOpen(false);
                       }}
                       className="block w-full text-left px-4 py-2 text-foreground hover:text-green-500 hover:bg-accent/50 transition-colors font-semibold"

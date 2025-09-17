@@ -59,7 +59,7 @@ const Footer = () => {
       links: [
         { name: "Join Waitlist", href: "/coming-soon", icon: Clock },
         { name: "Limited Drops", href: "/limited-drops", icon: Flame },
-        { name: "Become Driver", href: "/driver", icon: Car },
+        { name: "Become Driver", href: "/drive", icon: Car },
         { name: "Add Brand", href: "/add-your-brand", icon: Store },
         { name: "Marketplace", href: "/marketplace#quiz-section", icon: Building2 }
       ]
