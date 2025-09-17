@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Gift, Clock, Star, Zap, Shield, Truck } from "lucide-react";

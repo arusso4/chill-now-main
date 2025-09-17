@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import { Metadata } from 'next';
 import { Search, Filter, Play, Quote } from "lucide-react";

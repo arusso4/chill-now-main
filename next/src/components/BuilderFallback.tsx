@@ -1,5 +1,6 @@
+"use client";
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Home, ArrowLeft, AlertCircle } from 'lucide-react';
 
@@ -36,7 +37,7 @@ const BuilderFallback: React.FC<BuilderFallbackProps> = ({ slug, error }) => {
 
           {/* Actions */}
           <div className="space-y-3">
-            <Link to="/">
+            <Link href="/">
               <Button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white">
                 <Home className="w-4 h-4 mr-2" />
                 Go Home

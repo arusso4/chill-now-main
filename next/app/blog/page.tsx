@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import { Metadata } from 'next';
 import { Calendar, Clock, ArrowRight, Search, Filter } from "lucide-react";

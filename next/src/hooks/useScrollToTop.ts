@@ -1,4 +1,6 @@
-import { useNavigate } from 'react-router-dom';
+"use client";
+import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 // List of internal pages that should use scroll-to-top behavior
 const INTERNAL_PAGES = [
@@ -15,32 +17,30 @@ const INTERNAL_PAGES = [
 ];
 
 export const useScrollToTop = () => {
-  const navigate = useNavigate();
-
-  const navigateWithScrollToTop = (path: string) => {
+  const pathname = usePathname();
+  
+  useEffect(() => {
     // Check if this is an internal page that should use scroll-to-top
-    const isInternalPage = INTERNAL_PAGES.some(page => path.startsWith(page));
+    const isInternalPage = INTERNAL_PAGES.some(page => pathname.startsWith(page));
     
     if (isInternalPage) {
       // Disable smooth scrolling temporarily
       const originalScrollBehavior = document.documentElement.style.scrollBehavior;
       document.documentElement.style.scrollBehavior = 'auto';
       
-      // Navigate to the path
-      navigate(path);
+      // Scroll to top immediately
+      window.scrollTo(0, 0);
       
-      // Scroll to top immediately after navigation
+      // Restore smooth scrolling after a brief delay
       setTimeout(() => {
-        window.scrollTo(0, 0);
-        // Restore smooth scrolling after a brief delay
-        setTimeout(() => {
-          document.documentElement.style.scrollBehavior = originalScrollBehavior;
-        }, 100);
-      }, 0);
-    } else {
-      // For external links or non-internal pages, use regular navigation
-      navigate(path);
+        document.documentElement.style.scrollBehavior = originalScrollBehavior;
+      }, 100);
     }
+  }, [pathname]);
+
+  const navigateWithScrollToTop = (path: string) => {
+    // For Next.js, we'll use window.location for navigation
+    window.location.href = path;
   };
 
   return navigateWithScrollToTop;

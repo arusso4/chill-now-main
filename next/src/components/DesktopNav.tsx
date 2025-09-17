@@ -1,15 +1,16 @@
+"use client";
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ChevronDown, Sparkles } from "lucide-react";
 import { useScrollToTop } from "@/hooks/useScrollToTop";
 
 const DesktopNav = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const location = useLocation();
-  const navigate = useNavigate();
+  const pathname = usePathname();
   const navigateWithScrollToTop = useScrollToTop();
-  const isHomePage = location.pathname === "/";
+  const isHomePage = pathname === "/";
 
   const scrollToSection = (sectionId: string) => {
     if (isHomePage) {
@@ -47,7 +48,7 @@ const DesktopNav = () => {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link 
-              to="/" 
+              href="/" 
               onClick={handleLogoClick}
               className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
             >
@@ -72,13 +73,13 @@ const DesktopNav = () => {
                 How It Works
               </button>
               <Link 
-                to="/marketplace#quiz-section"
+                href="/marketplace#quiz-section"
                 className="text-foreground hover:text-green-500 transition-colors font-bold"
               >
                 Shop
               </Link>
               <Link 
-                to="/limited-drops"
+                href="/limited-drops"
                 className="text-foreground hover:text-green-500 transition-colors font-bold"
               >
                 Limited Drops

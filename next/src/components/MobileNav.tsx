@@ -1,17 +1,18 @@
+"use client";
 import React, { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Sparkles } from "lucide-react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useScrollToTop } from "@/hooks/useScrollToTop";
 
 const MobileNav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const location = useLocation();
-  const navigate = useNavigate();
+  const pathname = usePathname();
   const navigateWithScrollToTop = useScrollToTop();
-  const isHomePage = location.pathname === "/";
+  const isHomePage = pathname === "/";
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -99,7 +100,7 @@ const MobileNav = () => {
       >
         <div className="flex items-center justify-between px-4 py-3">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity" onClick={handleLogoClick}>
+          <Link href="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity" onClick={handleLogoClick}>
             <div className="w-8 h-8 rounded-full bg-gradient-to-r from-green-500 to-blue-600 flex items-center justify-center" aria-hidden="true">
               <span className="text-white font-black text-sm">C</span>
             </div>

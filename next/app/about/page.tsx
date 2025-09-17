@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useRef } from "react";
 import { Metadata } from 'next';
 import { Button } from "@/components/ui/button";
