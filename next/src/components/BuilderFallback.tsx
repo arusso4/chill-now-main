@@ -45,7 +45,11 @@ const BuilderFallback: React.FC<BuilderFallbackProps> = ({ slug, error }) => {
             </Link>
             
             <button
-              onClick={() => window.history.back()}
+              onClick={() => {
+                if (typeof window !== 'undefined') {
+                  window.history.back();
+                }
+              }}
               className="w-full flex items-center justify-center px-4 py-2 text-gray-600 hover:text-gray-800 transition-colors"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />

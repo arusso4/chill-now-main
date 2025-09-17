@@ -146,7 +146,11 @@ export default function AboutPageClient() {
           <Button 
             size="lg" 
             className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-lg px-8 py-4 font-bold border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-            onClick={() => document.getElementById('get-involved')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => {
+              if (typeof window !== 'undefined') {
+                document.getElementById('get-involved')?.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
           >
             <Sparkles className="w-5 h-5 mr-2" />
             Join the Movement

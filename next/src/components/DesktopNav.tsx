@@ -35,7 +35,9 @@ const DesktopNav = () => {
     if (isHomePage) {
       // If already on homepage, scroll to top
       e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (typeof window !== 'undefined') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     }
     // If on another page, let the Link handle navigation to homepage
   };

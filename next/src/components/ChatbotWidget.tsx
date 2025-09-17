@@ -12,7 +12,7 @@ import {
   Sparkles,
   Zap
 } from "lucide-react";
-import { openAIService, CHILLNOW_SYSTEM_CONTEXT } from "@/lib/openai";
+import { CHILLNOW_SYSTEM_CONTEXT } from "@/lib/openai";
 import { chatService } from "@/lib/chatService";
 import { thePlugService } from "@/lib/thePlugService";
 import { supabase } from "@/integrations/supabase/client";
@@ -46,6 +46,20 @@ const ChatbotWidget: React.FC<ChatbotWidgetProps> = ({
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // Check if we have the necessary environment variables
+  const hasOpenAIKey = typeof window !== 'undefined' && (
+    !!process.env.NEXT_PUBLIC_OPENAI_API_KEY || 
+    !!process.env.NEXT_PUBLIC_OPENAI_ENABLED
+  );
+
+  // If no API key is available, don't render the widget
+  if (!hasOpenAIKey) {
+    if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
+      console.warn('OpenAI API key not found. ChatbotWidget will not be rendered.');
+    }
+    return null;
+  }
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {

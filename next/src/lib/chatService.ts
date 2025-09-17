@@ -10,6 +10,11 @@ export interface ChatMessage {
 
 export class ChatService {
   private getSessionId(): string {
+    if (typeof window === 'undefined') {
+      // Return a temporary session ID for SSR
+      return 'temp-session-id';
+    }
+    
     let sessionId = localStorage.getItem('chat_session_id');
     if (!sessionId) {
       sessionId = crypto.randomUUID();
@@ -98,8 +103,10 @@ export class ChatService {
   }
 
   clearSession(): void {
-    localStorage.removeItem('chat_session_id');
-    console.log('🗑️ Chat session cleared');
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('chat_session_id');
+      console.log('🗑️ Chat session cleared');
+    }
   }
 }
 

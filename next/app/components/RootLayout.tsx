@@ -1,8 +1,13 @@
 import React from "react";
+import dynamic from "next/dynamic";
 import DesktopNav from "@/components/DesktopNav";
 import MobileNav from "@/components/MobileNav";
 import Footer from "@/components/Footer";
-import ChatbotWidget from "@/components/ChatbotWidget";
+
+// Dynamic import for ChatbotWidget with SSR disabled
+const ChatbotWidget = dynamic(() => import("@/components/ChatbotWidget"), { 
+  ssr: false 
+});
 
 interface RootLayoutProps {
   children: React.ReactNode;

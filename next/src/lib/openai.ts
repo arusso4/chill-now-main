@@ -12,15 +12,23 @@ interface OpenAIResponse {
 }
 
 export class OpenAIService {
-  private apiKey: string;
+  private apiKey: string | null = null;
   private baseURL: string = 'https://api.openai.com/v1';
 
   constructor() {
-    this.apiKey = process.env.OPENAI_API_KEY || '';
-    
-    if (!this.apiKey) {
-      console.warn('OpenAI API key not found. Please set OPENAI_API_KEY in your .env file');
+    // Don't initialize API key at module level to avoid SSR issues
+  }
+
+  private getApiKey(): string | null {
+    if (this.apiKey === null) {
+      // Only access environment variables in browser context
+      if (typeof window !== 'undefined') {
+        this.apiKey = process.env.NEXT_PUBLIC_OPENAI_API_KEY || '';
+      } else {
+        this.apiKey = '';
+      }
     }
+    return this.apiKey;
   }
 
   async sendMessage(
@@ -28,7 +36,8 @@ export class OpenAIService {
     conversationHistory: ChatMessage[] = [],
     systemContext?: string
   ): Promise<string> {
-    if (!this.apiKey) {
+    const apiKey = this.getApiKey();
+    if (!apiKey) {
       throw new Error('OpenAI API key not configured');
     }
 
@@ -56,7 +65,7 @@ export class OpenAIService {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${this.apiKey}`
+          'Authorization': `Bearer ${apiKey}`
         },
         body: JSON.stringify({
           model: 'gpt-4',
