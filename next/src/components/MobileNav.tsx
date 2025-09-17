@@ -214,7 +214,7 @@ const MobileNav = () => {
                     <li>
                       <button
                         onClick={() => {
-                          navigateWithScrollToTop('/testimonials');
+                          router.push('/testimonials');
                           closeMenu();
                         }}
                         className="block w-full text-left text-foreground hover:text-green-500 transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 rounded px-2 py-1 font-semibold"
@@ -226,7 +226,7 @@ const MobileNav = () => {
                     <li>
                       <button
                         onClick={() => {
-                          navigateWithScrollToTop('/blog');
+                          router.push('/blog');
                           closeMenu();
                         }}
                         className="block w-full text-left text-foreground hover:text-green-500 transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 rounded px-2 py-1 font-semibold"
@@ -238,7 +238,7 @@ const MobileNav = () => {
                     <li>
                       <button
                         onClick={() => {
-                          navigateWithScrollToTop('/about');
+                          router.push('/about');
                           closeMenu();
                         }}
                         className="block w-full text-left text-foreground hover:text-green-500 transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 rounded px-2 py-1 font-semibold"
@@ -250,7 +250,7 @@ const MobileNav = () => {
                     <li>
                       <button
                         onClick={() => {
-                          navigateWithScrollToTop('/add-your-brand');
+                          router.push('/add-your-brand');
                           closeMenu();
                         }}
                         className="block w-full text-left text-foreground hover:text-green-500 transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 rounded px-2 py-1 font-semibold"
@@ -262,7 +262,7 @@ const MobileNav = () => {
                     <li>
                       <button
                         onClick={() => {
-                          navigateWithScrollToTop('/driver');
+                          router.push('/driver');
                           closeMenu();
                         }}
                         className="block w-full text-left text-foreground hover:text-green-500 transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 rounded px-2 py-1 font-semibold"
@@ -278,7 +278,7 @@ const MobileNav = () => {
               <div className="pt-4 border-t border-border">
                 <Button
                   onClick={() => {
-                    navigateWithScrollToTop('/coming-soon');
+                    router.push('/coming-soon');
                     closeMenu();
                   }}
                   className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 font-bold border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"

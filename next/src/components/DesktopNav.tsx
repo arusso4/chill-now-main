@@ -117,7 +117,7 @@ const DesktopNav = () => {
                     </button>
                     <button
                       onClick={() => {
-                        navigateWithScrollToTop('/testimonials');
+                        router.push('/testimonials');
                         setIsDropdownOpen(false);
                       }}
                       className="block w-full text-left px-4 py-2 text-foreground hover:text-green-500 hover:bg-accent/50 transition-colors font-semibold"
@@ -126,7 +126,7 @@ const DesktopNav = () => {
                     </button>
                     <button
                       onClick={() => {
-                        navigateWithScrollToTop('/blog');
+                        router.push('/blog');
                         setIsDropdownOpen(false);
                       }}
                       className="block w-full text-left px-4 py-2 text-foreground hover:text-green-500 hover:bg-accent/50 transition-colors font-semibold"
@@ -135,7 +135,7 @@ const DesktopNav = () => {
                     </button>
                     <button
                       onClick={() => {
-                        navigateWithScrollToTop('/about');
+                        router.push('/about');
                         setIsDropdownOpen(false);
                       }}
                       className="block w-full text-left px-4 py-2 text-foreground hover:text-green-500 hover:bg-accent/50 transition-colors font-semibold"
@@ -144,7 +144,7 @@ const DesktopNav = () => {
                     </button>
                     <button
                       onClick={() => {
-                        navigateWithScrollToTop('/add-your-brand');
+                        router.push('/add-your-brand');
                         setIsDropdownOpen(false);
                       }}
                       className="block w-full text-left px-4 py-2 text-foreground hover:text-green-500 hover:bg-accent/50 transition-colors font-semibold"
@@ -153,7 +153,7 @@ const DesktopNav = () => {
                     </button>
                     <button
                       onClick={() => {
-                        navigateWithScrollToTop('/driver');
+                        router.push('/driver');
                         setIsDropdownOpen(false);
                       }}
                       className="block w-full text-left px-4 py-2 text-foreground hover:text-green-500 hover:bg-accent/50 transition-colors font-semibold"
@@ -168,7 +168,7 @@ const DesktopNav = () => {
             {/* CTA Button */}
             <Button 
               className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 font-bold border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-              onClick={() => navigateWithScrollToTop('/coming-soon')}
+              onClick={() => router.push('/coming-soon')}
             >
               <Sparkles className="w-4 h-4 mr-2" />
               Join Waitlist
