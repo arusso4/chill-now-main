@@ -169,7 +169,7 @@ const MobileNav = () => {
                   </li>
                   <li>
                     <Link
-                      to="/marketplace#quiz-section"
+                      href="/marketplace#quiz-section"
                       className="block w-full text-left text-foreground hover:text-green-500 transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 rounded px-2 py-1 font-bold"
                       onClick={closeMenu}
                       role="menuitem"
@@ -179,7 +179,7 @@ const MobileNav = () => {
                   </li>
                   <li>
                     <Link
-                      to="/limited-drops"
+                      href="/limited-drops"
                       className="block w-full text-left text-foreground hover:text-green-500 transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 rounded px-2 py-1 font-bold"
                       onClick={closeMenu}
                       role="menuitem"
