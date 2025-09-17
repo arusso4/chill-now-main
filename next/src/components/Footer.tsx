@@ -117,15 +117,15 @@ const Footer = () => {
               <ul className="space-y-2">
                 {section.links.map((link) => (
                   <li key={link.name}>
-                    <button
-                      onClick={() => navigateWithScrollToTop(link.href)}
+                    <Link
+                      href={link.href}
                       className="text-sm text-muted-foreground hover:text-green-500 transition-all duration-300 flex items-center space-x-2 group hover:translate-x-1 font-semibold w-full text-left"
                     >
                       {link.icon && (
                         <link.icon className="w-4 h-4 group-hover:scale-110 transition-transform duration-300 group-hover:rotate-3" />
                       )}
                       <span className="group-hover:font-bold transition-all duration-300">{link.name}</span>
-                    </button>
+                    </Link>
                   </li>
                 ))}
               </ul>
