@@ -79,25 +79,27 @@ export default function BrandForm() {
   };
 
   return (
-    <section id="apply" className="py-20 bg-gray-50">
+    <section id="apply" className="relative py-20 bg-background">
+      {/* decorative background ok, but behind */}
+      <div className="pointer-events-none absolute inset-0 -z-10" />
+      
       <div className="container mx-auto px-6">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Apply Now</h2>
-            <p className="text-xl text-gray-600">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Apply Now</h2>
+            <p className="text-xl text-muted-foreground">
               Ready to join the ChillNOW family? Fill out the form below and we'll get back to you within 48 hours.
             </p>
           </div>
           
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 bg-white p-8 rounded-2xl border border-gray-200 shadow-sm">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 bg-card p-8 rounded-2xl border border-border shadow-sm">
             <div className="grid sm:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <Label htmlFor="brandName">Brand Name *</Label>
+                <Label htmlFor="brandName" className="text-sm font-medium text-foreground">Brand Name *</Label>
                 <Input
                   id="brandName"
                   {...register("brandName")}
                   placeholder="Your brand name"
-                  className="bg-white border-gray-300"
                 />
                 {errors.brandName && (
                   <p className="text-sm text-red-600">{errors.brandName.message}</p>
@@ -105,13 +107,12 @@ export default function BrandForm() {
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="website">Website *</Label>
+                <Label htmlFor="website" className="text-sm font-medium text-foreground">Website *</Label>
                 <Input
                   id="website"
                   {...register("website")}
                   type="url"
                   placeholder="https://yourbrand.com"
-                  className="bg-white border-gray-300"
                 />
                 {errors.website && (
                   <p className="text-sm text-red-600">{errors.website.message}</p>
@@ -121,12 +122,11 @@ export default function BrandForm() {
             
             <div className="grid sm:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <Label htmlFor="contactName">Contact Name *</Label>
+                <Label htmlFor="contactName" className="text-sm font-medium text-foreground">Contact Name *</Label>
                 <Input
                   id="contactName"
                   {...register("contactName")}
                   placeholder="Your full name"
-                  className="bg-white border-gray-300"
                 />
                 {errors.contactName && (
                   <p className="text-sm text-red-600">{errors.contactName.message}</p>
@@ -134,13 +134,12 @@ export default function BrandForm() {
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="email">Email *</Label>
+                <Label htmlFor="email" className="text-sm font-medium text-foreground">Email *</Label>
                 <Input
                   id="email"
                   {...register("email")}
                   type="email"
                   placeholder="your@email.com"
-                  className="bg-white border-gray-300"
                 />
                 {errors.email && (
                   <p className="text-sm text-red-600">{errors.email.message}</p>
@@ -149,13 +148,12 @@ export default function BrandForm() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="phone">Phone Number</Label>
+              <Label htmlFor="phone" className="text-sm font-medium text-foreground">Phone Number</Label>
               <Input
                 id="phone"
                 {...register("phone")}
                 type="tel"
                 placeholder="(555) 123-4567"
-                className="bg-white border-gray-300"
               />
               {errors.phone && (
                 <p className="text-sm text-red-600">{errors.phone.message}</p>
@@ -163,13 +161,13 @@ export default function BrandForm() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="markets">Target Markets *</Label>
+              <Label htmlFor="markets" className="text-sm font-medium text-foreground">Target Markets *</Label>
               <Textarea
                 id="markets"
                 {...register("markets")}
                 rows={3}
                 placeholder="Which markets would you like to launch in? (e.g., Denver, Phoenix, Las Vegas, Kansas City)"
-                className="bg-white border-gray-300 resize-none"
+                className="resize-none"
               />
               {errors.markets && (
                 <p className="text-sm text-red-600">{errors.markets.message}</p>
@@ -177,7 +175,7 @@ export default function BrandForm() {
             </div>
 
             <div className="space-y-3">
-              <Label>Product Categories *</Label>
+              <Label className="text-base font-semibold text-foreground">Product Categories *</Label>
               <div className="grid grid-cols-2 gap-3">
                 {productCategoryOptions.map((category) => (
                   <div key={category} className="flex items-center space-x-2">
@@ -186,7 +184,7 @@ export default function BrandForm() {
                       checked={watchedProductCategories.includes(category)}
                       onCheckedChange={(checked) => handleCategoryChange(category, checked as boolean)}
                     />
-                    <Label htmlFor={category} className="text-sm font-normal">
+                    <Label htmlFor={category} className="text-sm font-normal text-foreground">
                       {category}
                     </Label>
                   </div>
@@ -198,13 +196,13 @@ export default function BrandForm() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="notes">Additional Information</Label>
+              <Label htmlFor="notes" className="text-sm font-medium text-foreground">Additional Information</Label>
               <Textarea
                 id="notes"
                 {...register("notes")}
                 rows={4}
                 placeholder="Tell us more about your brand, products, or any specific requirements..."
-                className="bg-white border-gray-300 resize-none"
+                className="resize-none"
               />
             </div>
 
@@ -213,7 +211,7 @@ export default function BrandForm() {
                 id="agreeToTerms"
                 {...register("agreeToTerms")}
               />
-              <Label htmlFor="agreeToTerms" className="text-sm">
+              <Label htmlFor="agreeToTerms" className="text-sm text-foreground">
                 I agree to the <a href="/terms" className="text-emerald-600 hover:underline">Terms of Service</a> and <a href="/privacy" className="text-emerald-600 hover:underline">Privacy Policy</a> *
               </Label>
             </div>
