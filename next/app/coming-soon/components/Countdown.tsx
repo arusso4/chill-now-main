@@ -96,12 +96,13 @@ const Countdown: React.FC = () => {
 
   const remaining = Math.max(0, TARGET - now);
   
-  const hours = Math.floor(remaining / (1000 * 60 * 60));
+  const days = Math.floor(remaining / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((remaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
 
-  const timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-  const screenReaderText = `${hours} hours, ${minutes} minutes, and ${seconds} seconds remaining until January 1, 2026`;
+  const timeString = `${days.toString().padStart(2, '0')}:${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  const screenReaderText = `${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds remaining until January 1, 2026`;
 
   return (
     <div className="text-center" aria-live="polite" aria-label={screenReaderText}>
@@ -125,11 +126,27 @@ const Countdown: React.FC = () => {
 
       {/* Dot Matrix Display */}
       <div className="flex items-center justify-center gap-2 md:gap-4 mb-8">
-        {/* Hours */}
+        {/* Days */}
         <div className="flex flex-col items-center">
           <div className="flex items-center gap-1 md:gap-2">
             <DotMatrixDigit char={timeString[0]} className="mx-1 md:mx-2" />
             <DotMatrixDigit char={timeString[1]} className="mx-1 md:mx-2" />
+          </div>
+          <div className="mt-4 text-xs md:text-sm text-muted-foreground font-medium uppercase tracking-wide">
+            Days
+          </div>
+        </div>
+
+        {/* Colon */}
+        <div className="flex items-center justify-center h-full">
+          <DotMatrixDigit char=":" className="mx-1 md:mx-2" />
+        </div>
+
+        {/* Hours */}
+        <div className="flex flex-col items-center">
+          <div className="flex items-center gap-1 md:gap-2">
+            <DotMatrixDigit char={timeString[3]} className="mx-1 md:mx-2" />
+            <DotMatrixDigit char={timeString[4]} className="mx-1 md:mx-2" />
           </div>
           <div className="mt-4 text-xs md:text-sm text-muted-foreground font-medium uppercase tracking-wide">
             Hours
@@ -144,8 +161,8 @@ const Countdown: React.FC = () => {
         {/* Minutes */}
         <div className="flex flex-col items-center">
           <div className="flex items-center gap-1 md:gap-2">
-            <DotMatrixDigit char={timeString[3]} className="mx-1 md:mx-2" />
-            <DotMatrixDigit char={timeString[4]} className="mx-1 md:mx-2" />
+            <DotMatrixDigit char={timeString[6]} className="mx-1 md:mx-2" />
+            <DotMatrixDigit char={timeString[7]} className="mx-1 md:mx-2" />
           </div>
           <div className="mt-4 text-xs md:text-sm text-muted-foreground font-medium uppercase tracking-wide">
             Minutes
@@ -160,8 +177,8 @@ const Countdown: React.FC = () => {
         {/* Seconds */}
         <div className="flex flex-col items-center">
           <div className="flex items-center gap-1 md:gap-2">
-            <DotMatrixDigit char={timeString[6]} className="mx-1 md:mx-2" />
-            <DotMatrixDigit char={timeString[7]} className="mx-1 md:mx-2" />
+            <DotMatrixDigit char={timeString[9]} className="mx-1 md:mx-2" />
+            <DotMatrixDigit char={timeString[10]} className="mx-1 md:mx-2" />
           </div>
           <div className="mt-4 text-xs md:text-sm text-muted-foreground font-medium uppercase tracking-wide">
             Seconds
