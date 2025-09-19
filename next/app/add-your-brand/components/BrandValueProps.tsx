@@ -36,11 +36,14 @@ export default function BrandValueProps() {
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="relative py-20 bg-background">
+      {/* decorative background ok, but behind */}
+      <div className="pointer-events-none absolute inset-0 -z-10" />
+      
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Partner with ChillNOW?</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground text-center">Why Partner with ChillNOW?</h2>
+          <p className="mt-2 text-center text-muted-foreground max-w-3xl mx-auto">
             We're building the future of cannabis and wellness delivery. 
             Join brands that are already seeing incredible growth with our platform.
           </p>
@@ -48,10 +51,10 @@ export default function BrandValueProps() {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {valueProps.map((prop, index) => (
-            <div key={index} className="text-center p-6 bg-gray-50 rounded-2xl border border-gray-200 hover:border-emerald-500/50 transition-colors">
+            <div key={index} className="text-center p-6 bg-card rounded-2xl border border-border hover:border-emerald-500/50 transition-colors">
               <prop.icon className="w-12 h-12 mx-auto mb-4 text-emerald-600" />
-              <h3 className="text-xl font-semibold mb-2">{prop.title}</h3>
-              <p className="text-gray-600">{prop.description}</p>
+              <h3 className="text-xl font-semibold text-foreground mb-2">{prop.title}</h3>
+              <p className="text-muted-foreground">{prop.description}</p>
             </div>
           ))}
         </div>
