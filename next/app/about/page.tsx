@@ -1,14 +1,20 @@
 import React from "react";
 import { Metadata } from 'next';
-import AboutPageClient from './AboutPageClient';
+import AboutHero3D from "./components/AboutHero3D";
+import AboutStats from "./components/AboutStats";
+import AboutMission from "./components/AboutMission";
+import AboutTimeline from "./components/AboutTimeline";
+import AboutValues from "./components/AboutValues";
+import AboutTeam from "./components/AboutTeam";
+import AboutCTA from "./components/AboutCTA";
 
 export const metadata: Metadata = {
-  title: 'About ChillNOW - Premium Cannabis Delivery | Our Story & Mission',
-  description: 'Learn about ChillNOW\'s mission to revolutionize cannabis delivery. Premium products, lightning-fast service, and a commitment to wellness without regret.',
-  keywords: 'about ChillNOW, cannabis delivery company, premium cannabis, wellness mission, cannabis revolution, fast delivery service',
+  title: 'About ChillNOW - Cannabis Delivery Revolution | Our Story & Mission',
+  description: 'Learn about ChillNOW\'s mission to revolutionize cannabis delivery. Discover our story, values, team, and commitment to safe, fast, and reliable cannabis delivery services.',
+  keywords: 'about chillnow, cannabis delivery company, cannabis delivery mission, cannabis delivery team, cannabis delivery story',
   openGraph: {
-    title: 'About ChillNOW - Premium Cannabis Delivery | Our Story & Mission',
-    description: 'Learn about ChillNOW\'s mission to revolutionize cannabis delivery. Premium products, lightning-fast service, and a commitment to wellness without regret.',
+    title: 'About ChillNOW - Cannabis Delivery Revolution',
+    description: 'Learn about ChillNOW\'s mission to revolutionize cannabis delivery. Discover our story, values, team, and commitment to safe, fast, and reliable cannabis delivery services.',
     url: 'https://chillnow.com/about',
     siteName: 'ChillNOW',
     images: [
@@ -16,7 +22,7 @@ export const metadata: Metadata = {
         url: 'https://chillnow.com/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'About ChillNOW cannabis delivery company',
+        alt: 'ChillNOW About - Cannabis Delivery Revolution',
       },
     ],
     locale: 'en_US',
@@ -26,8 +32,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@chillnow',
     creator: '@chillnow',
-    title: 'About ChillNOW - Premium Cannabis Delivery | Our Story & Mission',
-    description: 'Learn about ChillNOW\'s mission to revolutionize cannabis delivery. Premium products, lightning-fast service, and a commitment to wellness without regret.',
+    title: 'About ChillNOW - Cannabis Delivery Revolution',
+    description: 'Learn about ChillNOW\'s mission to revolutionize cannabis delivery. Discover our story, values, team, and commitment to safe, fast, and reliable cannabis delivery services.',
     images: ['https://chillnow.com/og-image.jpg'],
   },
   alternates: {
@@ -36,5 +42,15 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-  return <AboutPageClient />;
+  return (
+    <main className="min-h-screen">
+      <AboutHero3D />
+      <AboutStats />
+      <AboutMission />
+      <AboutTimeline />
+      <AboutValues />
+      <AboutTeam />
+      <AboutCTA />
+    </main>
+  );
 }
