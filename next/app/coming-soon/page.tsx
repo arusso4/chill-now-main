@@ -2,6 +2,7 @@ import React from "react";
 import { Metadata } from 'next';
 import ComingSoonHero from "./components/ComingSoonHero";
 import ComingSoonTimer from "./components/ComingSoonTimer";
+import Countdown from "./components/Countdown";
 import ComingSoonFeatures from "./components/ComingSoonFeatures";
 import ComingSoonNotify from "./components/ComingSoonNotify";
 import ComingSoonFAQ from "./components/ComingSoonFAQ";
@@ -45,6 +46,11 @@ export default function ComingSoonPage() {
     <main className="min-h-screen">
       <ComingSoonHero />
       <ComingSoonTimer />
+      <section className="bg-[#0b0f14] py-10 md:py-14">
+        <div className="container mx-auto px-6">
+          <Countdown />
+        </div>
+      </section>
       <ComingSoonFeatures />
       <ComingSoonNotify />
       <ComingSoonFAQ />
