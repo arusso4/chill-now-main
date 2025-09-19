@@ -71,7 +71,7 @@ export default function DriverFAQ() {
                 value={`item-${index}`}
                 className="border border-gray-200 rounded-lg px-6"
               >
-                <AccordionTrigger className="text-left font-semibold text-lg hover:no-underline py-6">
+                <AccordionTrigger className="text-left font-semibold text-lg hover:no-underline py-6 text-foreground hover:text-foreground focus-visible:ring-2 focus-visible:ring-emerald-400">
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-gray-600 pb-6 leading-relaxed">

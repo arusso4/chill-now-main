@@ -8,9 +8,9 @@ export default function DriverHero() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       {/* Background Elements */}
-      <div className="absolute inset-0 bg-[radial-gradient(1200px_600px_at_50%_-20%,rgba(120,119,198,0.3),rgba(0,0,0,0))]" />
-      <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full opacity-20 animate-pulse"></div>
-      <div className="absolute bottom-20 right-20 w-24 h-24 bg-gradient-to-r from-green-400 to-blue-500 rounded-full opacity-30 animate-bounce"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(1200px_600px_at_50%_-20%,rgba(120,119,198,0.3),rgba(0,0,0,0))] -z-10 pointer-events-none" />
+      <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full opacity-20 animate-pulse -z-10 pointer-events-none"></div>
+      <div className="absolute bottom-20 right-20 w-24 h-24 bg-gradient-to-r from-green-400 to-blue-500 rounded-full opacity-30 animate-bounce -z-10 pointer-events-none"></div>
       
       <div className="relative z-10 container mx-auto px-6 py-20 lg:py-32">
         <div className="max-w-4xl mx-auto text-center">
@@ -22,11 +22,11 @@ export default function DriverHero() {
           
           {/* Headline */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight">
-            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent drop-shadow-[0_1px_1px_rgba(0,0,0,0.6)]">
               Drive for
             </span>
             <br />
-            <span className="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 bg-clip-text text-transparent drop-shadow-[0_1px_1px_rgba(0,0,0,0.6)]">
               ChillNOW
             </span>
           </h1>

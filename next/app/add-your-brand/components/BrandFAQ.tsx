@@ -51,7 +51,7 @@ export default function BrandFAQ() {
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, index) => (
               <AccordionItem key={index} value={`item-${index}`} className="bg-gray-50 rounded-2xl border border-gray-200 px-6">
-                <AccordionTrigger className="text-left font-semibold text-lg text-gray-900 hover:no-underline hover:text-emerald-600 transition-colors">
+                <AccordionTrigger className="text-left font-semibold text-lg text-foreground hover:no-underline hover:text-foreground focus-visible:ring-2 focus-visible:ring-emerald-400 transition-colors">
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-gray-600 leading-relaxed pb-4">
