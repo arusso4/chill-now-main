@@ -30,35 +30,26 @@ const CTASection = () => {
   ];
   
   return (
-    <section className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 relative overflow-hidden"
-      style={{
-        background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%)'
-      }}
+    <section className="relative py-16 bg-pink-500 px-4 sm:px-6"
     >
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-green-400 to-blue-500 rounded-full opacity-20 animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-24 h-24 bg-gradient-to-r from-orange-400 to-red-500 rounded-full opacity-30 animate-bounce"></div>
-        <div className="absolute bottom-20 left-1/4 w-16 h-16 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full opacity-25 animate-spin"></div>
-      </div>
       
       <div className="max-w-4xl mx-auto text-center relative z-10">
         {/* Urgency Badge */}
-        <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-accent/20 border border-accent/30 text-accent font-bold mb-6 sm:mb-8 text-sm sm:text-base">
+        <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-white/20 border border-white/30 text-white font-bold mb-6 sm:mb-8 text-sm sm:text-base">
           <Clock className="w-3 h-3 sm:w-4 sm:h-4" aria-hidden="true" />
           <span>Limited Spots Available for Free Delivery</span>
         </div>
         
         {/* Headline */}
-        <h2 id="cta-heading" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 sm:mb-6 leading-tight">
+        <h2 id="cta-heading" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 sm:mb-6 leading-tight text-white">
           Ready to Ditch the Hangover for a{" "}
-          <span className="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-teal-300 to-fuchsia-400 drop-shadow-[0_1px_1px_rgba(0,0,0,0.6)]">
             High That Hits?
           </span>
         </h2>
         
         {/* Subheadline */}
-        <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-8 sm:mb-12 max-w-2xl mx-auto px-2">
+        <p className="text-lg sm:text-xl md:text-2xl text-pink-100 mb-8 sm:mb-12 max-w-2xl mx-auto px-2">
           Join the early wave of legends who've already ditched the hangover for something better.
         </p>
         
@@ -68,12 +59,12 @@ const CTASection = () => {
             const IconComponent = benefit.icon;
             
             return (
-              <li key={index} className="flex items-center gap-3 text-left p-4 sm:p-4 rounded-xl bg-card/50 border border-border">
-                <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br ${benefit.gradient} flex items-center justify-center flex-shrink-0 shadow-lg`}>
-                  <IconComponent className="w-4 h-4 sm:w-5 sm:h-5 text-white" aria-hidden="true" />
+              <li key={index} className="flex items-center gap-3 text-left p-4 sm:p-4 rounded-xl bg-white rounded-2xl shadow-lg">
+                <div className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-400 flex-shrink-0">
+                  <IconComponent className="w-4 h-4" aria-hidden="true" />
                 </div>
                 <div className="min-w-0">
-                  <div className="font-bold text-sm sm:text-base">{benefit.title}</div>
+                  <div className="font-bold text-sm sm:text-base text-foreground">{benefit.title}</div>
                   <div className="text-xs sm:text-sm text-muted-foreground">{benefit.subtitle}</div>
                 </div>
               </li>
@@ -85,7 +76,7 @@ const CTASection = () => {
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-6 sm:mb-8">
           <Button 
             size="lg" 
-            className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-base sm:text-lg px-6 sm:px-10 py-4 sm:py-6 w-full sm:w-auto font-bold border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            className="bg-gradient-to-r from-emerald-500 to-fuchsia-500 hover:from-emerald-600 hover:to-fuchsia-600 text-white text-base sm:text-lg px-6 sm:px-10 py-4 sm:py-6 w-full sm:w-auto font-bold border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
             onClick={() => setIsDialogOpen(true)}
             aria-label="Claim your early access with special benefits"
           >
@@ -95,7 +86,7 @@ const CTASection = () => {
           <Button 
             variant="outline" 
             size="lg" 
-            className="text-base sm:text-lg px-6 sm:px-10 py-4 sm:py-6 w-full sm:w-auto font-bold border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white transition-all duration-300"
+            className="text-base sm:text-lg px-6 sm:px-10 py-4 sm:py-6 w-full sm:w-auto font-bold border-2 border-white text-white hover:bg-accent/50 transition-all duration-300"
             onClick={() => setIsDialogOpen(true)}
             aria-label="Join the waitlist for free"
           >
@@ -104,7 +95,7 @@ const CTASection = () => {
         </div>
         
         {/* Social Proof */}
-        <div className="flex items-center justify-center gap-2 text-xs sm:text-sm text-muted-foreground">
+        <div className="flex items-center justify-center gap-2 text-xs sm:text-sm text-pink-100">
           <div className="flex -space-x-2" aria-label="User avatars">
             {[
               { id: 1, name: "User 1" },
@@ -114,7 +105,7 @@ const CTASection = () => {
             ].map(user => (
               <div 
                 key={user.id} 
-                className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-r from-green-500 to-blue-600 border-2 border-background" 
+                className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-r from-emerald-500 to-fuchsia-500 border-2 border-white" 
                 aria-label={`${user.name} avatar`}
                 role="img"
               />
@@ -124,7 +115,7 @@ const CTASection = () => {
         </div>
         
         {/* Trust Badge */}
-        <p className="text-xs text-muted-foreground mt-4 sm:mt-6 px-2">
+        <p className="text-xs text-pink-100 mt-4 sm:mt-6 px-2">
           100% secure • No spam • Unsubscribe anytime • Operating in legal markets only
         </p>
       </div>

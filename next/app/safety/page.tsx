@@ -1,22 +1,54 @@
 import React from "react";
 import { Metadata } from 'next';
+import SafetyHero from "./components/SafetyHero";
+import SafetyPillars from "./components/SafetyPillars";
+import SafetyProcess from "./components/SafetyProcess";
+import SafetyFaq from "./components/SafetyFaq";
+import SafetyResources from "./components/SafetyResources";
+import SafetyCTA from "./components/SafetyCTA";
 
 export const metadata: Metadata = {
-  title: 'ChillNOW Safety - Safe Cannabis Delivery',
-  description: 'Learn about ChillNOW\'s commitment to safety in cannabis delivery. Background-checked drivers, secure transactions, and responsible delivery practices.',
-  keywords: 'cannabis delivery safety, safe cannabis delivery, background checked drivers, secure cannabis delivery',
+  title: 'Safety First - ChillNOW Cannabis Delivery | Secure & Responsible',
+  description: 'Learn about ChillNOW\'s comprehensive safety measures for cannabis delivery. Background-checked drivers, secure transactions, age verification, and responsible delivery practices.',
+  keywords: 'cannabis delivery safety, safe cannabis delivery, background checked drivers, secure cannabis delivery, age verification, responsible delivery',
+  openGraph: {
+    title: 'Safety First - ChillNOW Cannabis Delivery',
+    description: 'Learn about ChillNOW\'s comprehensive safety measures for cannabis delivery. Background-checked drivers, secure transactions, and responsible delivery practices.',
+    url: 'https://chillnow.com/safety',
+    siteName: 'ChillNOW',
+    images: [
+      {
+        url: 'https://chillnow.com/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'ChillNOW safety and security measures',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@chillnow',
+    creator: '@chillnow',
+    title: 'Safety First - ChillNOW Cannabis Delivery',
+    description: 'Learn about ChillNOW\'s comprehensive safety measures for cannabis delivery. Background-checked drivers, secure transactions, and responsible delivery practices.',
+    images: ['https://chillnow.com/og-image.jpg'],
+  },
+  alternates: {
+    canonical: 'https://chillnow.com/safety',
+  },
 };
 
 export default function SafetyPage() {
   return (
-    <div className="min-h-screen bg-background pt-16">
-      <div className="container mx-auto px-4 py-16">
-        <h1 className="text-4xl font-bold mb-8">Safety</h1>
-        <p className="text-lg text-muted-foreground">
-          Learn about our commitment to safety in cannabis delivery.
-        </p>
-        {/* TODO: Migrate full Safety page content */}
-      </div>
-    </div>
+    <main className="min-h-screen">
+      <SafetyHero />
+      <SafetyPillars />
+      <SafetyProcess />
+      <SafetyFaq />
+      <SafetyResources />
+      <SafetyCTA />
+    </main>
   );
 }

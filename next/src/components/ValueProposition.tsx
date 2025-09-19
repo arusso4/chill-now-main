@@ -31,12 +31,12 @@ const ValueProposition = () => {
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <header className="text-center mb-12 sm:mb-16">
-          <h2 id="value-heading" className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 sm:mb-6">
-            <span className="bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
+          <h2 id="value-heading" className="text-3xl md:text-4xl font-bold text-foreground text-center mb-4 sm:mb-6">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-teal-300 to-fuchsia-400 drop-shadow-[0_1px_1px_rgba(0,0,0,0.6)]">
               Unwind Without Regret
             </span>
           </h2>
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto px-2">
+          <p className="text-muted-foreground text-center max-w-2xl mx-auto px-2">
             Because wellness shouldn't suck. Or take two hours.
           </p>
         </header>
@@ -46,27 +46,25 @@ const ValueProposition = () => {
           {benefits.map((benefit, index) => (
             <li key={index} className="relative group">
               {/* Card */}
-              <article className="h-full p-6 sm:p-8 rounded-2xl bg-card border border-border hover:border-green-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-green-500/20 group-hover:translate-y-[-4px]">
+              <article className="h-full rounded-2xl border border-border bg-card p-6 shadow-sm">
                 {/* Icon */}
-                <div className={`w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br ${benefit.gradient} flex items-center justify-center mb-4 sm:mb-6 shadow-lg`}>
-                  <benefit.icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" aria-hidden="true" />
+                <div className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-400 mb-4 sm:mb-6">
+                  <benefit.icon className="w-6 h-6" aria-hidden="true" />
                 </div>
                 
                 {/* Content */}
-                <h3 className="text-xl sm:text-2xl font-black mb-2">{benefit.title}</h3>
-                <p className="text-green-500 font-bold mb-3 sm:mb-4 text-sm sm:text-base">{benefit.subtitle}</p>
-                <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">{benefit.description}</p>
+                <h3 className="text-lg font-semibold text-foreground mb-2">{benefit.title}</h3>
+                <p className="text-emerald-500 font-bold mb-3 sm:mb-4 text-sm sm:text-base">{benefit.subtitle}</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">{benefit.description}</p>
               </article>
               
-              {/* Glow Effect */}
-              <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${benefit.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl`} aria-hidden="true" />
             </li>
           ))}
         </ul>
         
         {/* Bottom CTA */}
         <div className="text-center mt-12 sm:mt-16">
-          <div className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-green-500/10 border border-green-500/30 text-green-500 font-bold text-sm sm:text-base">
+          <div className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-500 font-bold text-sm sm:text-base">
             <Zap className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" />
             <span>Join 500+ people on the waitlist</span>
           </div>

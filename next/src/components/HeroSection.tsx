@@ -43,15 +43,15 @@ const HeroSection = () => {
           id="hero-heading"
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight" 
         >
-          <span className="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-teal-300 to-fuchsia-400 drop-shadow-[0_1px_1px_rgba(0,0,0,0.6)]">
             Get It First.
           </span>
           <br />
-          <span className="bg-gradient-to-r from-orange-400 via-red-500 to-pink-600 bg-clip-text text-transparent">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-teal-300 to-fuchsia-400 drop-shadow-[0_1px_1px_rgba(0,0,0,0.6)]">
             Before the World
           </span>
           <br />
-          <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-600 bg-clip-text text-transparent">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-teal-300 to-fuchsia-400 drop-shadow-[0_1px_1px_rgba(0,0,0,0.6)]">
             Wakes Up.
           </span>
         </h1>
@@ -71,7 +71,7 @@ const HeroSection = () => {
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
           <Button 
             size="lg" 
-            className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-lg px-8 py-4 font-bold border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            className="bg-gradient-to-r from-emerald-500 to-fuchsia-500 hover:from-emerald-600 hover:to-fuchsia-600 text-white text-lg px-8 py-4 font-bold border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
             onClick={() => router.push('/coming-soon')}
             aria-label="Join the waitlist for early access"
           >
@@ -82,7 +82,7 @@ const HeroSection = () => {
           <Button 
             variant="outline" 
             size="lg" 
-            className="text-lg px-8 py-4 font-bold border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white transition-all duration-300"
+            className="text-lg px-8 py-4 font-bold border-2 border-emerald-500 text-emerald-500 hover:bg-accent/50 transition-all duration-300"
             onClick={scrollToWhyChooseUs}
             aria-label="Learn what makes us different"
           >

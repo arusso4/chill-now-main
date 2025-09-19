@@ -28,11 +28,11 @@ const HowItWorks = () => {
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <header className="text-center mb-12 sm:mb-16">
-          <h2 id="how-it-works-heading" className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 sm:mb-6">
+          <h2 id="how-it-works-heading" className="text-3xl md:text-4xl font-bold text-foreground text-center mb-4 sm:mb-6">
             Dead Simple.{" "}
-            <span className="bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">Fast AF</span>
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-teal-300 to-fuchsia-400 drop-shadow-[0_1px_1px_rgba(0,0,0,0.6)]">Fast AF</span>
           </h2>
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto px-2">
+          <p className="text-muted-foreground text-center max-w-2xl mx-auto px-2">
             We've streamlined the entire experience so you can focus on what matters: actually enjoying your downtime.
           </p>
         </header>
@@ -43,24 +43,24 @@ const HowItWorks = () => {
             <li key={index} className="relative">
               {/* Connection Line - Hidden on mobile */}
               {index < steps.length - 1 && (
-                <div className="hidden md:block absolute top-20 left-full w-full h-0.5 bg-gradient-to-r from-green-500 to-blue-500 z-0 translate-x-[-50%]" aria-hidden="true" />
+                <div className="hidden md:block absolute top-20 left-full w-full h-0.5 bg-gradient-to-r from-emerald-500 to-fuchsia-500 z-0 translate-x-[-50%]" aria-hidden="true" />
               )}
               
               {/* Step Content */}
               <article className="relative z-10 text-center">
                 {/* Icon Circle */}
-                <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 rounded-full bg-gradient-to-r from-green-500 to-blue-600 flex items-center justify-center shadow-lg">
-                  <step.icon className="w-8 h-8 sm:w-10 sm:h-10 text-white" aria-hidden="true" />
+                <div className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-400 mx-auto mb-4 sm:mb-6">
+                  <step.icon className="w-6 h-6" aria-hidden="true" />
                 </div>
                 
                 {/* Step Number */}
-                <div className="text-4xl sm:text-6xl font-black text-green-500/20 mb-3 sm:mb-4" aria-label={`Step ${index + 1}`}>
+                <div className="text-4xl sm:text-6xl font-black text-emerald-500/20 mb-3 sm:mb-4" aria-label={`Step ${index + 1}`}>
                   {step.number}
                 </div>
                 
                 {/* Content */}
-                <h3 className="text-xl sm:text-2xl font-black mb-3 sm:mb-4">{step.title}</h3>
-                <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">{step.description}</p>
+                <h3 className="text-lg font-semibold text-foreground mb-3 sm:mb-4">{step.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{step.description}</p>
               </article>
             </li>
           ))}
@@ -68,17 +68,17 @@ const HowItWorks = () => {
         
         {/* Bottom Stats */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mt-16 sm:mt-20 text-center" role="list" aria-label="Service statistics">
-          <div className="p-4 sm:p-6 rounded-xl bg-card/50 border border-border" role="listitem">
-                                                     <div className="text-2xl sm:text-3xl font-black text-green-500 mb-1 sm:mb-2">60min</div>
-            <div className="text-muted-foreground text-sm sm:text-base">Average delivery</div>
+          <div className="rounded-2xl border border-border bg-card p-6 shadow-sm" role="listitem">
+            <div className="text-2xl sm:text-3xl font-black text-emerald-500 mb-1 sm:mb-2">60min</div>
+            <div className="text-sm text-muted-foreground">Average delivery</div>
           </div>
-          <div className="p-4 sm:p-6 rounded-xl bg-card/50 border border-border" role="listitem">
-            <div className="text-2xl sm:text-3xl font-black text-blue-500 mb-1 sm:mb-2">100%</div>
-            <div className="text-muted-foreground text-sm sm:text-base">Legal compliance</div>
+          <div className="rounded-2xl border border-border bg-card p-6 shadow-sm" role="listitem">
+            <div className="text-2xl sm:text-3xl font-black text-fuchsia-500 mb-1 sm:mb-2">100%</div>
+            <div className="text-sm text-muted-foreground">Legal compliance</div>
           </div>
-          <div className="p-4 sm:p-6 rounded-xl bg-card/50 border border-border" role="listitem">
-            <div className="text-2xl sm:text-3xl font-black text-purple-500 mb-1 sm:mb-2">24/7</div>
-            <div className="text-muted-foreground text-sm sm:text-base">Customer support</div>
+          <div className="rounded-2xl border border-border bg-card p-6 shadow-sm" role="listitem">
+            <div className="text-2xl sm:text-3xl font-black text-teal-500 mb-1 sm:mb-2">24/7</div>
+            <div className="text-sm text-muted-foreground">Customer support</div>
           </div>
         </div>
       </div>

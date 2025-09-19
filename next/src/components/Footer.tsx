@@ -84,10 +84,10 @@ const Footer = () => {
           {/* Brand Section - Takes up 1 column */}
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-r from-green-500 to-blue-600 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-r from-emerald-500 to-fuchsia-500 rounded-lg flex items-center justify-center">
                 <Leaf className="w-5 h-5 text-white" />
               </div>
-              <span className="text-xl font-black bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
+              <span className="text-xl font-black bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-teal-300 to-fuchsia-400 drop-shadow-[0_1px_1px_rgba(0,0,0,0.6)]">
                 chillNOW
               </span>
             </div>
@@ -97,11 +97,11 @@ const Footer = () => {
             </p>
             <div className="flex items-center space-x-4 text-sm text-muted-foreground">
               <div className="flex items-center space-x-1">
-                <Shield className="w-4 h-4 text-green-500" />
+                <Shield className="w-4 h-4 text-emerald-500" />
                 <span className="font-semibold">100% Secure</span>
               </div>
               <div className="flex items-center space-x-1">
-                <Globe className="w-4 h-4 text-blue-500" />
+                <Globe className="w-4 h-4 text-fuchsia-500" />
                 <span className="font-semibold">Legal Markets</span>
               </div>
             </div>
@@ -111,7 +111,7 @@ const Footer = () => {
           {footerSections.map((section) => (
             <div key={section.title} className="space-y-4">
               <div className="flex items-center space-x-2">
-                <section.icon className="w-5 h-5 text-green-500" />
+                <section.icon className="w-5 h-5 text-emerald-500" />
                 <h3 className="font-black text-foreground">{section.title}</h3>
               </div>
               <ul className="space-y-2">
@@ -119,7 +119,7 @@ const Footer = () => {
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="text-sm text-muted-foreground hover:text-green-500 transition-all duration-300 flex items-center space-x-2 group hover:translate-x-1 font-semibold w-full text-left"
+                      className="text-sm text-muted-foreground hover:text-emerald-500 transition-all duration-300 flex items-center space-x-2 group hover:translate-x-1 font-semibold w-full text-left"
                     >
                       {link.icon && (
                         <link.icon className="w-4 h-4 group-hover:scale-110 transition-transform duration-300 group-hover:rotate-3" />
@@ -147,11 +147,11 @@ const Footer = () => {
             
             <div className="flex items-center space-x-6 text-sm text-muted-foreground">
               <div className="flex items-center space-x-1">
-                <Users className="w-4 h-4 text-green-500" />
+                <Users className="w-4 h-4 text-emerald-500" />
                 <span className="font-semibold">Trusted by thousands</span>
               </div>
               <div className="flex items-center space-x-1">
-                <Mail className="w-4 h-4 text-blue-500" />
+                <Mail className="w-4 h-4 text-fuchsia-500" />
                 <span className="font-semibold">No spam • Unsubscribe anytime</span>
               </div>
             </div>
