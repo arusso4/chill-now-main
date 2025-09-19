@@ -1,22 +1,54 @@
 import React from "react";
 import { Metadata } from 'next';
+import ComingSoonHero from "./components/ComingSoonHero";
+import ComingSoonTimer from "./components/ComingSoonTimer";
+import ComingSoonFeatures from "./components/ComingSoonFeatures";
+import ComingSoonNotify from "./components/ComingSoonNotify";
+import ComingSoonFAQ from "./components/ComingSoonFAQ";
+import ComingSoonCTA from "./components/ComingSoonCTA";
 
 export const metadata: Metadata = {
-  title: 'Coming Soon - ChillNOW',
-  description: 'Something exciting is coming to ChillNOW. Stay tuned for updates on new features and services.',
-  keywords: 'coming soon, ChillNOW updates, new features, cannabis delivery updates',
+  title: 'Coming Soon - ChillNOW Cannabis Delivery | Join the Waitlist',
+  description: 'ChillNOW is launching soon! Join our waitlist to be the first to experience premium cannabis delivery. Get early access, exclusive deals, and be part of the revolution.',
+  keywords: 'cannabis delivery coming soon, cannabis delivery waitlist, early access cannabis delivery, premium cannabis delivery, cannabis delivery launch',
+  openGraph: {
+    title: 'Coming Soon - ChillNOW Cannabis Delivery',
+    description: 'ChillNOW is launching soon! Join our waitlist to be the first to experience premium cannabis delivery. Get early access, exclusive deals, and be part of the revolution.',
+    url: 'https://chillnow.com/coming-soon',
+    siteName: 'ChillNOW',
+    images: [
+      {
+        url: 'https://chillnow.com/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'ChillNOW Coming Soon - Cannabis Delivery Revolution',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@chillnow',
+    creator: '@chillnow',
+    title: 'Coming Soon - ChillNOW Cannabis Delivery',
+    description: 'ChillNOW is launching soon! Join our waitlist to be the first to experience premium cannabis delivery. Get early access, exclusive deals, and be part of the revolution.',
+    images: ['https://chillnow.com/og-image.jpg'],
+  },
+  alternates: {
+    canonical: 'https://chillnow.com/coming-soon',
+  },
 };
 
 export default function ComingSoonPage() {
   return (
-    <div className="min-h-screen bg-background pt-16">
-      <div className="container mx-auto px-4 py-16">
-        <h1 className="text-4xl font-bold mb-8">Coming Soon</h1>
-        <p className="text-lg text-muted-foreground">
-          Something exciting is coming to ChillNOW. Stay tuned!
-        </p>
-        {/* TODO: Migrate full Coming Soon page content */}
-      </div>
-    </div>
+    <main className="min-h-screen">
+      <ComingSoonHero />
+      <ComingSoonTimer />
+      <ComingSoonFeatures />
+      <ComingSoonNotify />
+      <ComingSoonFAQ />
+      <ComingSoonCTA />
+    </main>
   );
 }

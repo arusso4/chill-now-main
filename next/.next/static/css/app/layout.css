@@ -2503,6 +2503,9 @@ video {
 .font-semibold {
   font-weight: 600;
 }
+.uppercase {
+  text-transform: uppercase;
+}
 .italic {
   font-style: italic;
 }
@@ -2527,6 +2530,9 @@ video {
 }
 .tracking-widest {
   letter-spacing: 0.1em;
+}
+.tracking-wide {
+  letter-spacing: 0.025em;
 }
 .text-accent-foreground {
   color: hsl(var(--accent-foreground));
@@ -3491,6 +3497,10 @@ video {
   pointer-events: none;
 }
 
+.disabled\:transform-none:disabled {
+  transform: none;
+}
+
 .disabled\:cursor-not-allowed:disabled {
   cursor: not-allowed;
 }
@@ -4317,6 +4327,10 @@ video {
     margin-top: 2rem;
   }
 
+  .sm\:mt-12 {
+    margin-top: 3rem;
+  }
+
   .sm\:flex {
     display: flex;
   }
@@ -4517,6 +4531,10 @@ video {
 
   .sm\:pt-28 {
     padding-top: 7rem;
+  }
+
+  .sm\:pt-8 {
+    padding-top: 2rem;
   }
 
   .sm\:text-left {
