@@ -1,0 +1,26 @@
+{
+  "app/components/RootLayout.tsx -> @/components/ChatbotWidget": {
+    "id": 8722,
+    "files": [
+      "static/chunks/106-76001f58cc6b0458.js",
+      "static/chunks/410.73cf2873d54c0a6b.js",
+      "static/chunks/722.4b3a84727f121ff9.js"
+    ]
+  },
+  "node_modules/@supabase/auth-js/dist/module/lib/helpers.js -> @supabase/node-fetch": {
+    "id": 9895,
+    "files": []
+  },
+  "node_modules/@supabase/functions-js/dist/module/helper.js -> @supabase/node-fetch": {
+    "id": 9895,
+    "files": []
+  },
+  "node_modules/@supabase/realtime-js/dist/module/RealtimeClient.js -> @supabase/node-fetch": {
+    "id": 9895,
+    "files": []
+  },
+  "node_modules/@supabase/storage-js/dist/module/lib/helpers.js -> @supabase/node-fetch": {
+    "id": 9895,
+    "files": []
+  }
+}

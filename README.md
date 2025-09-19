@@ -29,10 +29,13 @@ git clone <YOUR_GIT_URL>
 # Step 2: Navigate to the project directory.
 cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
+# Step 3: Navigate to the Next.js app directory.
+cd next
+
+# Step 4: Install the necessary dependencies.
 npm i
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Step 5: Start the development server with auto-reloading and an instant preview.
 npm run dev
 ```
 
@@ -54,15 +57,25 @@ npm run dev
 
 This project is built with:
 
-- Vite
+- Next.js 15
 - TypeScript
-- React
+- React 18
 - shadcn-ui
 - Tailwind CSS
+- Supabase
 
 ## How can I deploy this project?
 
+### Option 1: Deploy with Lovable
 Simply open [Lovable](https://lovable.dev/projects/3a942a1b-151c-4f11-991b-63904fed5be4) and click on Share -> Publish.
+
+### Option 2: Deploy with Vercel
+To deploy this Next.js application to Vercel:
+
+1. **Set Root Directory**: In your Vercel project settings, set the **Root Directory** to `next`
+2. **Deploy**: Connect your GitHub repository and deploy
+
+**Important**: The Next.js application is located in the `/next` folder, so Vercel must be configured to build from that directory.
 
 ## Can I connect a custom domain to my Lovable project?
 

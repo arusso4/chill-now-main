@@ -1,14 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { z } from "zod";
-
-const BrandApplicationSchema = z.object({
-  brandName: z.string().min(2, "Brand name must be at least 2 characters").max(100),
-  website: z.string().url("Please enter a valid website URL"),
-  contactPerson: z.string().min(2, "Contact person name must be at least 2 characters").max(100),
-  email: z.string().email("Please enter a valid email address"),
-  productCategory: z.string().min(1, "Please select a product category"),
-  launchMarkets: z.string().min(10, "Please provide launch markets information")
-});
+import { BrandApplicationSchema } from "@/lib/validators/brand";
 
 export async function POST(request: NextRequest) {
   try {
