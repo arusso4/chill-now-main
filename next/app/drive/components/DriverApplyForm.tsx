@@ -93,26 +93,20 @@ export default function DriverApplyForm() {
   }
 
   return (
-    <section id="apply" className="py-20 bg-gray-50">
+    <section id="apply" className="relative py-16 md:py-24 bg-pink-500">
       <div className="container mx-auto px-6">
-        <div className="max-w-2xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Apply to Drive
-            </h2>
-            <p className="text-xl text-gray-600">
-              Fill out the form below to start your journey as a ChillNOW driver.
-            </p>
-          </div>
-          
+        <h2 className="text-3xl md:text-4xl font-bold text-white text-center">Start Your Journey as a ChillNOW Driver</h2>
+        <p className="mt-3 text-center text-pink-100">Fill out the form below to get started.</p>
+
+        <div className="mt-10 rounded-2xl bg-white p-8 shadow-lg max-w-3xl mx-auto">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             {/* Personal Information */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <h3 className="text-xl font-bold mb-6">Personal Information</h3>
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-6">Personal Information</h3>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <Label htmlFor="name">Full Name *</Label>
+                  <Label htmlFor="name" className="text-gray-900">Full Name *</Label>
                   <Input
                     id="name"
                     {...register("name")}
@@ -125,7 +119,7 @@ export default function DriverApplyForm() {
                 </div>
                 
                 <div>
-                  <Label htmlFor="email">Email Address *</Label>
+                  <Label htmlFor="email" className="text-gray-900">Email Address *</Label>
                   <Input
                     id="email"
                     type="email"
@@ -139,7 +133,7 @@ export default function DriverApplyForm() {
                 </div>
                 
                 <div>
-                  <Label htmlFor="phone">Phone Number *</Label>
+                  <Label htmlFor="phone" className="text-gray-900">Phone Number *</Label>
                   <Input
                     id="phone"
                     {...register("phone")}
@@ -152,7 +146,7 @@ export default function DriverApplyForm() {
                 </div>
                 
                 <div>
-                  <Label htmlFor="city">City *</Label>
+                  <Label htmlFor="city" className="text-gray-900">City *</Label>
                   <Input
                     id="city"
                     {...register("city")}
@@ -167,11 +161,11 @@ export default function DriverApplyForm() {
             </div>
             
             {/* Vehicle Information */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <h3 className="text-xl font-bold mb-6">Vehicle Information</h3>
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-6">Vehicle Information</h3>
               
               <div>
-                <Label htmlFor="vehicleType">Vehicle Type *</Label>
+                <Label htmlFor="vehicleType" className="text-gray-900">Vehicle Type *</Label>
                 <Select onValueChange={(value) => setValue("vehicleType", value as any)}>
                   <SelectTrigger className="mt-1">
                     <SelectValue placeholder="Select your vehicle type" />
@@ -191,8 +185,8 @@ export default function DriverApplyForm() {
             </div>
             
             {/* Availability */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <h3 className="text-xl font-bold mb-6">Availability *</h3>
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-6">Availability *</h3>
               <p className="text-gray-600 mb-4">Select the days you're available to drive:</p>
               
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -203,7 +197,7 @@ export default function DriverApplyForm() {
                       checked={availability.includes(day)}
                       onCheckedChange={(checked) => handleAvailabilityChange(day, checked as boolean)}
                     />
-                    <Label htmlFor={day} className="text-sm">{day}</Label>
+                    <Label htmlFor={day} className="text-sm text-gray-900">{day}</Label>
                   </div>
                 ))}
               </div>
@@ -213,11 +207,11 @@ export default function DriverApplyForm() {
             </div>
             
             {/* Additional Information */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <h3 className="text-xl font-bold mb-6">Additional Information</h3>
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-6">Additional Information</h3>
               
               <div>
-                <Label htmlFor="notes">Tell us about yourself (optional)</Label>
+                <Label htmlFor="notes" className="text-gray-900">Tell us about yourself (optional)</Label>
                 <Textarea
                   id="notes"
                   {...register("notes")}
@@ -228,7 +222,7 @@ export default function DriverApplyForm() {
             </div>
             
             {/* Terms and Conditions */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
+            <div>
               <div className="flex items-start space-x-3">
                 <Checkbox
                   id="agreeToTerms"
@@ -236,7 +230,7 @@ export default function DriverApplyForm() {
                   className="mt-1"
                 />
                 <div className="flex-1">
-                  <Label htmlFor="agreeToTerms" className="text-sm">
+                  <Label htmlFor="agreeToTerms" className="text-sm text-gray-900">
                     I agree to the{" "}
                     <a href="/terms" className="text-blue-600 hover:underline">
                       Terms and Conditions
@@ -260,7 +254,7 @@ export default function DriverApplyForm() {
                 type="submit"
                 size="lg"
                 disabled={isSubmitting}
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-12 py-4 text-lg font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                className="bg-gradient-to-r from-emerald-500 to-fuchsia-500 hover:from-emerald-600 hover:to-fuchsia-600 text-white px-12 py-4 text-lg font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
               >
                 {isSubmitting ? (
                   <>
