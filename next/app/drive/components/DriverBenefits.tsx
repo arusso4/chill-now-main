@@ -64,13 +64,16 @@ export default function DriverBenefits() {
   ];
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="relative py-20 bg-background">
+      {/* decorative background ok, but behind */}
+      <div className="pointer-events-none absolute inset-0 -z-10" />
+      
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Why Drive with ChillNOW?
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Join thousands of drivers who have found success with our platform. 
             We provide everything you need to thrive in the cannabis delivery space.
           </p>
@@ -80,12 +83,12 @@ export default function DriverBenefits() {
           {benefits.map((benefit, index) => {
             const IconComponent = benefit.icon;
             return (
-              <div key={index} className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+              <div key={index} className="bg-card rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-border">
                 <div className={`w-16 h-16 rounded-full bg-gradient-to-r ${benefit.color} flex items-center justify-center mb-4`}>
                   <IconComponent className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold mb-3">{benefit.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
+                <h3 className="text-xl font-bold text-foreground mb-3">{benefit.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{benefit.description}</p>
               </div>
             );
           })}

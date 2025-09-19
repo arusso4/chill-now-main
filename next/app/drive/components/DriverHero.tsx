@@ -15,39 +15,39 @@ export default function DriverHero() {
       <div className="relative z-10 container mx-auto px-6 py-20 lg:py-32">
         <div className="max-w-4xl mx-auto text-center">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white text-sm font-bold mb-8">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-emerald-500 to-fuchsia-500 text-white text-sm font-bold mb-8">
             <Car className="w-4 h-4" />
             <span>Join Our Driver Network</span>
           </div>
           
           {/* Headline */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight">
-            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent drop-shadow-[0_1px_1px_rgba(0,0,0,0.6)]">
+            <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-fuchsia-400 bg-clip-text text-transparent drop-shadow-[0_1px_1px_rgba(0,0,0,0.6)]">
               Drive for
             </span>
             <br />
-            <span className="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 bg-clip-text text-transparent drop-shadow-[0_1px_1px_rgba(0,0,0,0.6)]">
+            <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-fuchsia-400 bg-clip-text text-transparent drop-shadow-[0_1px_1px_rgba(0,0,0,0.6)]">
               ChillNOW
             </span>
           </h1>
           
           {/* Subheadline */}
-          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto leading-relaxed">
             Be part of the cannabis delivery revolution. Earn competitive pay, set your own schedule, and deliver premium products to customers who value quality.
           </p>
           
           {/* Key Benefits */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             <div className="flex items-center justify-center gap-3 text-white">
-              <DollarSign className="w-6 h-6 text-green-400" />
+              <DollarSign className="w-6 h-6 text-emerald-400" />
               <span className="font-semibold">$25-35/hour</span>
             </div>
             <div className="flex items-center justify-center gap-3 text-white">
-              <Clock className="w-6 h-6 text-blue-400" />
+              <Clock className="w-6 h-6 text-teal-300" />
               <span className="font-semibold">Flexible Hours</span>
             </div>
             <div className="flex items-center justify-center gap-3 text-white">
-              <MapPin className="w-6 h-6 text-purple-400" />
+              <MapPin className="w-6 h-6 text-fuchsia-400" />
               <span className="font-semibold">Your Area</span>
             </div>
           </div>
@@ -57,7 +57,7 @@ export default function DriverHero() {
             <Link href="#apply">
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700 text-lg px-8 py-4 font-bold border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                className="bg-gradient-to-r from-emerald-500 to-fuchsia-500 hover:from-emerald-600 hover:to-fuchsia-600 text-white text-lg px-8 py-4 font-bold border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
               >
                 Apply to Drive
               </Button>

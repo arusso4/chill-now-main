@@ -43,13 +43,16 @@ export default function DriverRequirements() {
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="relative py-20 bg-background">
+      {/* decorative background ok, but behind */}
+      <div className="pointer-events-none absolute inset-0 -z-10" />
+      
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Driver Requirements
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             To ensure the safety and quality of our service, all drivers must meet these requirements.
           </p>
         </div>
@@ -58,17 +61,17 @@ export default function DriverRequirements() {
           {requirements.map((requirement, index) => {
             const IconComponent = requirement.icon;
             return (
-              <div key={index} className="bg-gray-50 rounded-2xl p-6 border border-gray-200">
+              <div key={index} className="bg-card rounded-2xl p-6 border border-border">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
-                    <IconComponent className="w-6 h-6 text-green-600" />
+                  <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                    <IconComponent className="w-6 h-6 text-emerald-600" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-lg font-bold mb-2">{requirement.title}</h3>
-                    <p className="text-gray-700 font-medium mb-2">{requirement.description}</p>
-                    <p className="text-sm text-gray-500">{requirement.details}</p>
+                    <h3 className="text-lg font-bold text-foreground mb-2">{requirement.title}</h3>
+                    <p className="text-muted-foreground font-medium mb-2">{requirement.description}</p>
+                    <p className="text-sm text-muted-foreground">{requirement.details}</p>
                   </div>
-                  <Check className="w-5 h-5 text-green-500 flex-shrink-0" />
+                  <Check className="w-5 h-5 text-emerald-500 flex-shrink-0" />
                 </div>
               </div>
             );
@@ -76,24 +79,24 @@ export default function DriverRequirements() {
         </div>
         
         <div className="mt-12 text-center">
-          <div className="bg-blue-50 border border-blue-200 rounded-2xl p-8 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold text-blue-900 mb-4">
+          <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-8 max-w-4xl mx-auto">
+            <h3 className="text-2xl font-bold text-emerald-900 mb-4">
               Ready to Get Started?
             </h3>
-            <p className="text-blue-700 mb-6">
+            <p className="text-emerald-700 mb-6">
               If you meet all the requirements above, you're ready to apply! 
               The application process takes about 10 minutes and includes a quick background check.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
                 href="#apply" 
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
+                className="bg-gradient-to-r from-emerald-500 to-fuchsia-500 hover:from-emerald-600 hover:to-fuchsia-600 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
               >
                 Apply Now
               </a>
               <a 
                 href="#faq" 
-                className="border border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-3 rounded-lg font-semibold transition-colors"
+                className="border border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-8 py-3 rounded-lg font-semibold transition-colors"
               >
                 View FAQ
               </a>

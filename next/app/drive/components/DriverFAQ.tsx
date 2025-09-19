@@ -52,29 +52,32 @@ export default function DriverFAQ() {
   ];
 
   return (
-    <section id="faq" className="py-20 bg-white">
+    <section id="faq" className="relative py-20 bg-background">
+      {/* decorative background ok, but behind */}
+      <div className="pointer-events-none absolute inset-0 -z-10" />
+      
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Frequently Asked Questions
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Have questions about driving with ChillNOW? We've got answers to the most common questions.
           </p>
         </div>
         
         <div className="max-w-4xl mx-auto">
-          <Accordion type="single" collapsible className="space-y-4">
+          <Accordion type="single" collapsible className="space-y-3">
             {faqs.map((faq, index) => (
               <AccordionItem 
                 key={index} 
                 value={`item-${index}`}
-                className="border border-gray-200 rounded-lg px-6"
+                className="rounded-2xl border border-border bg-card"
               >
-                <AccordionTrigger className="text-left font-semibold text-lg hover:no-underline py-6 text-foreground hover:text-foreground focus-visible:ring-2 focus-visible:ring-emerald-400">
+                <AccordionTrigger className="w-full text-left px-5 py-4 text-foreground font-medium rounded-2xl flex items-center justify-between hover:bg-accent/50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-gray-600 pb-6 leading-relaxed">
+                <AccordionContent className="px-5 pb-5 pt-0 text-sm text-muted-foreground">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
@@ -83,23 +86,23 @@ export default function DriverFAQ() {
         </div>
         
         <div className="mt-16 text-center">
-          <div className="bg-gray-50 rounded-2xl p-8 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold mb-4">
+          <div className="bg-card rounded-2xl p-8 max-w-2xl mx-auto border border-border">
+            <h3 className="text-2xl font-bold text-foreground mb-4">
               Still Have Questions?
             </h3>
-            <p className="text-gray-600 mb-6">
+            <p className="text-muted-foreground mb-6">
               Our driver support team is here to help. Contact us anytime for assistance.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
                 href="mailto:drivers@chillnow.com" 
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+                className="bg-gradient-to-r from-emerald-500 to-fuchsia-500 hover:from-emerald-600 hover:to-fuchsia-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
               >
                 Email Support
               </a>
               <a 
                 href="tel:+1-555-CHILL-NOW" 
-                className="border border-blue-600 text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-lg font-semibold transition-colors"
+                className="border border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-6 py-3 rounded-lg font-semibold transition-colors"
               >
                 Call Us
               </a>
