@@ -38,29 +38,26 @@ export default function BrandFAQ() {
   ];
 
   return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-6">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
-            <p className="text-xl text-gray-600">
-              Everything you need to know about partnering with ChillNOW
-            </p>
-          </div>
-          
-          <Accordion type="single" collapsible className="space-y-4">
-            {faqs.map((faq, index) => (
-              <AccordionItem key={index} value={`item-${index}`} className="bg-gray-50 rounded-2xl border border-gray-200 px-6">
-                <AccordionTrigger className="text-left font-semibold text-lg text-foreground hover:no-underline hover:text-foreground focus-visible:ring-2 focus-visible:ring-emerald-400 transition-colors">
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-gray-600 leading-relaxed pb-4">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
+    <section className="relative py-16 md:py-24 bg-background">
+      {/* decorative background ok, but behind */}
+      <div className="pointer-events-none absolute inset-0 -z-10" />
+
+      <div className="container mx-auto px-6 max-w-5xl">
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground text-center">Frequently Asked Questions</h2>
+        <p className="mt-3 text-center text-muted-foreground">Everything you need to know about partnering with ChillNOW</p>
+
+        <Accordion type="single" collapsible className="mt-8 space-y-3">
+          {faqs.map((faq, index) => (
+            <AccordionItem key={index} value={`item-${index}`} className="rounded-2xl border border-border bg-card">
+              <AccordionTrigger className="w-full text-left px-5 py-4 text-foreground font-medium rounded-2xl flex items-center justify-between hover:bg-accent/50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400">
+                {faq.question}
+              </AccordionTrigger>
+              <AccordionContent className="px-5 pb-5 pt-0 text-sm text-muted-foreground">
+                {faq.answer}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </div>
     </section>
   );
