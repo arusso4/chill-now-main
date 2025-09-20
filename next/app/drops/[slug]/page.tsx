@@ -73,13 +73,14 @@ const mockDrops = [
 ];
 
 interface DropDetailPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({ params }: DropDetailPageProps): Promise<Metadata> {
-  const drop = mockDrops.find(d => d.slug === params.slug);
+  const { slug } = await params;
+  const drop = mockDrops.find(d => d.slug === slug);
   
   if (!drop) {
     return {
@@ -121,8 +122,9 @@ export async function generateMetadata({ params }: DropDetailPageProps): Promise
   };
 }
 
-export default function DropDetailPage({ params }: DropDetailPageProps) {
-  const drop = mockDrops.find(d => d.slug === params.slug);
+export default async function DropDetailPage({ params }: DropDetailPageProps) {
+  const { slug } = await params;
+  const drop = mockDrops.find(d => d.slug === slug);
   
   if (!drop) {
     notFound();
