@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { buildFoxyInputs, getFoxyCartUrl, type Product, type ProductVariant } from "@/src/lib/foxy";
+import { buildFoxyInputs, getFoxyCartUrl, type Product, type ProductVariant } from "@/lib/foxy";
 
 interface FoxyProductFormProps {
   product: Product;

@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import { buildFoxyInputs, getFoxyCartUrl, type FoxyItem } from "@/src/lib/foxy";
+import { buildFoxyInputs, getFoxyCartUrl, type FoxyItem } from "@/lib/foxy";
 
 type Props = {
   item: FoxyItem;

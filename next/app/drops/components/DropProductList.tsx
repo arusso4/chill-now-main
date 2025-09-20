@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { Drop } from "./DropCard";
 import ReserveButton from "./ReserveButton";
-import { formatPrice } from "@/src/lib/foxy";
+import { formatPrice } from "@/lib/foxy";
 
 interface DropProductListProps {
   drop: Drop;

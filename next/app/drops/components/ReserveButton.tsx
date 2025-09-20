@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import FoxyAddToCartForm from "@/src/components/FoxyAddToCartForm";
-import type { FoxyItem } from "@/src/lib/foxy";
+import FoxyAddToCartForm from "@/components/FoxyAddToCartForm";
+import type { FoxyItem } from "@/lib/foxy";
 
 interface ReserveButtonProps {
   productId: string;

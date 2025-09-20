@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { foxyAddToCartPayload, type FoxyItem } from '@/src/lib/foxy';
+import { foxyAddToCartPayload, type FoxyItem } from '@/lib/foxy';
 
 export async function POST(request: NextRequest) {
   try {
