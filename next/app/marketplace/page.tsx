@@ -41,19 +41,20 @@ export const metadata: Metadata = {
 };
 
 type PageProps = {
-  searchParams?: {
+  searchParams?: Promise<{
     category?: string;
     brand?: string;
     q?: string;
     page?: string;
-  };
+  }>;
 };
 
 export default async function MarketplacePage({ searchParams }: PageProps) {
-  const category = searchParams?.category ?? "";
-  const brand = searchParams?.brand ?? "";
-  const q = searchParams?.q ?? "";
-  const page = Number(searchParams?.page ?? 1);
+  const resolvedSearchParams = await searchParams;
+  const category = resolvedSearchParams?.category ?? "";
+  const brand = resolvedSearchParams?.brand ?? "";
+  const q = resolvedSearchParams?.q ?? "";
+  const page = Number(resolvedSearchParams?.page ?? 1);
 
   return (
     <div className="min-h-screen bg-[#0b0f14] text-white">
