@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { createFoxyForm } from "@/lib/foxy";
+import FoxyAddToCartForm from "@/src/components/FoxyAddToCartForm";
+import type { FoxyItem } from "@/src/lib/foxy";
 
 interface ReserveButtonProps {
   productId: string;
@@ -26,6 +27,7 @@ export default function ReserveButton({
   const [isReserved, setIsReserved] = useState(false);
   const [error, setError] = useState("");
   const [quantity, setQuantity] = useState(1);
+  const [foxyItem, setFoxyItem] = useState<FoxyItem | null>(null);
 
   const handleReserve = async () => {
     setIsReserving(true);
@@ -51,29 +53,16 @@ export default function ReserveButton({
       }
 
       if (data.ok && data.payload) {
-        // Create and submit Foxy form
-        const foxyForm = createFoxyForm(data.payload);
+        // Convert payload to FoxyItem format
+        const item: FoxyItem = {
+          name: productTitle,
+          code: variantSku,
+          price: price,
+          quantity: quantity,
+          meta: data.payload
+        };
         
-        // Create a temporary form element and submit it
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = foxyForm.props.children.map((child: any) => 
-          `<input type="hidden" name="${child.props.name}" value="${child.props.value}" />`
-        ).join('');
-        
-        const form = document.createElement('form');
-        form.action = process.env.NEXT_PUBLIC_FOXY_CART_URL || "https://chillnow.foxycart.com/cart";
-        form.method = 'post';
-        form.setAttribute('data-fc-add-to-cart', '');
-        form.style.display = 'none';
-        
-        tempDiv.childNodes.forEach((input: any) => {
-          form.appendChild(input.cloneNode(true));
-        });
-        
-        document.body.appendChild(form);
-        form.submit();
-        document.body.removeChild(form);
-        
+        setFoxyItem(item);
         setIsReserved(true);
         
         // Show success message for screen readers
@@ -95,14 +84,9 @@ export default function ReserveButton({
     }
   };
 
-  if (isReserved) {
-    return (
-      <div className={`text-center ${className}`}>
-        <div className="bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 px-4 py-2 rounded-lg text-sm font-semibold">
-          ✅ Added to Cart
-        </div>
-      </div>
-    );
+  if (isReserved && foxyItem) {
+    // Auto-submit the Foxy form with the reservation meta
+    return <FoxyAddToCartForm item={foxyItem} autoSubmit className={className} />;
   }
 
   return (

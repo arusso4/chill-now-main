@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { foxyAddToCartPayload } from '@/lib/foxy';
+import { foxyAddToCartPayload, type FoxyItem } from '@/src/lib/foxy';
 
 export async function POST(request: NextRequest) {
   try {
@@ -55,7 +55,22 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Create Foxy.io payload
+    // Create Foxy.io item for the client
+    const item: FoxyItem = {
+      name: mockProduct.title,
+      code: mockProduct.sku,
+      price: mockProduct.price,
+      quantity: qty,
+      meta: {
+        brand: mockProduct.brand,
+        product_id: mockProduct.id,
+        variant_sku: variantSku,
+        drop_type: 'limited',
+        reservationId: `res_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+      }
+    };
+
+    // Create payload for backward compatibility
     const payload = foxyAddToCartPayload({
       name: mockProduct.title,
       code: mockProduct.sku,
@@ -74,6 +89,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       ok: true,
+      item,
       payload,
       message: 'Product reserved successfully'
     });

@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useSearchParams } from "next/navigation";
-import { Product } from "@/lib/foxy";
+import { Product } from "@/src/lib/foxy";
 import ProductCard from "./ProductCard";
 
 // Mock data - replace with Sanity data

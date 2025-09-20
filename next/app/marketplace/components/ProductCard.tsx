@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import { Product, ProductVariant, FoxyAddToCartButton, getPrimaryVariant, formatPrice, getProductImageUrl } from "@/lib/foxy";
+import { Product, ProductVariant, getPrimaryVariant, formatPrice, getProductImageUrl } from "@/src/lib/foxy";
+import { FoxyAddToCartButton } from "@/src/components/FoxyProductForm";
 
 interface ProductCardProps {
   product: Product;
