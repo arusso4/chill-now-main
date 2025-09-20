@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Metadata } from 'next';
 import MarketplaceHero from './components/MarketplaceHero';
 import FeaturedStrip from './components/FeaturedStrip';
@@ -40,7 +40,21 @@ export const metadata: Metadata = {
   },
 };
 
-export default function MarketplacePage() {
+type PageProps = {
+  searchParams?: {
+    category?: string;
+    brand?: string;
+    q?: string;
+    page?: string;
+  };
+};
+
+export default async function MarketplacePage({ searchParams }: PageProps) {
+  const category = searchParams?.category ?? "";
+  const brand = searchParams?.brand ?? "";
+  const q = searchParams?.q ?? "";
+  const page = Number(searchParams?.page ?? 1);
+
   return (
     <div className="min-h-screen bg-[#0b0f14] text-white">
       {/* Hero Section */}
@@ -55,12 +69,16 @@ export default function MarketplacePage() {
       
       {/* Product Filters */}
       <section id="filters" aria-labelledby="filters-heading">
-        <ProductFilters />
+        <Suspense fallback={null}>
+          <ProductFilters category={category} brand={brand} q={q} />
+        </Suspense>
       </section>
       
       {/* Product Grid */}
       <section id="products" aria-labelledby="products-heading">
-        <ProductGrid />
+        <Suspense fallback={null}>
+          <ProductGrid category={category} brand={brand} q={q} page={page} />
+        </Suspense>
       </section>
       
       {/* CTA Section */}

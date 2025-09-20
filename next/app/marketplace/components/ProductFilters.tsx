@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { useSearchParams, useRouter, usePathname } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 const categories = [
   { id: "all", label: "All", count: 24 },
@@ -12,23 +12,38 @@ const categories = [
   { id: "wellness", label: "Wellness", count: 2 }
 ];
 
-export default function ProductFilters() {
-  const searchParams = useSearchParams();
+type ProductFiltersProps = {
+  category: string;
+  brand: string;
+  q: string;
+};
+
+export default function ProductFilters({ category, brand, q }: ProductFiltersProps) {
   const router = useRouter();
   const pathname = usePathname();
-  const [activeCategory, setActiveCategory] = useState(searchParams.get("category") || "all");
+  const [activeCategory, setActiveCategory] = useState(category || "all");
 
   const handleCategoryChange = (categoryId: string) => {
     setActiveCategory(categoryId);
     
-    const params = new URLSearchParams(searchParams);
+    const params = new URLSearchParams();
+    
+    // Preserve existing search params
+    if (brand) params.set("brand", brand);
+    if (q) params.set("q", q);
+    
+    // Handle category
     if (categoryId === "all") {
       params.delete("category");
     } else {
       params.set("category", categoryId);
     }
     
-    router.push(`${pathname}?${params.toString()}`);
+    // Remove page when changing filters
+    params.delete("page");
+    
+    const queryString = params.toString();
+    router.push(`${pathname}${queryString ? `?${queryString}` : ""}`);
   };
 
   return (

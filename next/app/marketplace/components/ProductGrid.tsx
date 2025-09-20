@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { useSearchParams } from "next/navigation";
 import { Product } from "@/lib/foxy";
 import ProductCard from "./ProductCard";
 
@@ -121,15 +120,21 @@ const mockProducts: Product[] = [
   }
 ];
 
-export default function ProductGrid() {
-  const searchParams = useSearchParams();
-  const category = searchParams.get("category") || "all";
+type ProductGridProps = {
+  category: string;
+  brand: string;
+  q: string;
+  page: number;
+};
+
+export default function ProductGrid({ category, brand, q, page }: ProductGridProps) {
+  const activeCategory = category || "all";
   
   // Filter products based on category
-  const filteredProducts = category && category !== "all" 
+  const filteredProducts = activeCategory && activeCategory !== "all" 
     ? mockProducts.filter(product => 
         product.categories.some(cat => 
-          cat.toLowerCase().replace(/\s+/g, '-') === category
+          cat.toLowerCase().replace(/\s+/g, '-') === activeCategory
         )
       )
     : mockProducts;
