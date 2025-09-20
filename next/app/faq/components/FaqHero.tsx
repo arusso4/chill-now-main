@@ -7,8 +7,8 @@ export default function FaqHero() {
             Frequently Asked Questions
           </span>
         </h1>
-        <p className="mt-3 text-muted-foreground text-lg md:text-xl">
-          Find answers to common questions about ChillNOW's premium cannabis delivery service. Learn about delivery times, product quality, safety, and more.
+        <p className="mt-3 text-muted-foreground">
+          Everything you need to know about chillNOW — for customers, drivers, and brand partners.
         </p>
       </div>
     </section>

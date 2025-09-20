@@ -5,12 +5,12 @@ import FaqAccordion from './components/FaqAccordion';
 import FaqContact from './components/FaqContact';
 
 export const metadata: Metadata = {
-  title: 'ChillNOW FAQ - Frequently Asked Questions',
-  description: 'Find answers to common questions about ChillNOW\'s premium cannabis delivery service. Learn about delivery times, product quality, safety, and more.',
+  title: 'FAQ | chillNOW',
+  description: 'Answers to common questions from customers, drivers, and brand partners.',
   keywords: 'ChillNOW FAQ, cannabis delivery questions, delivery service FAQ, cannabis delivery help',
   openGraph: {
-    title: 'ChillNOW FAQ - Frequently Asked Questions',
-    description: 'Find answers to common questions about ChillNOW\'s premium cannabis delivery service. Learn about delivery times, product quality, safety, and more.',
+    title: 'FAQ | chillNOW',
+    description: 'Answers to common questions from customers, drivers, and brand partners.',
     url: 'https://chillnow.com/faq',
     siteName: 'ChillNOW',
     images: [
@@ -28,8 +28,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@chillnow',
     creator: '@chillnow',
-    title: 'ChillNOW FAQ - Frequently Asked Questions',
-    description: 'Find answers to common questions about ChillNOW\'s premium cannabis delivery service. Learn about delivery times, product quality, safety, and more.',
+    title: 'FAQ | chillNOW',
+    description: 'Answers to common questions from customers, drivers, and brand partners.',
     images: ['https://chillnow.com/og-image.jpg'],
   },
   alternates: {
