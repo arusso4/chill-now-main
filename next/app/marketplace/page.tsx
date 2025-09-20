@@ -1,5 +1,6 @@
 import React, { Suspense } from "react";
 import { Metadata } from 'next';
+import { SearchParams, normalizeSearchParams, str, num } from '@/lib/search-params';
 import MarketplaceHero from './components/MarketplaceHero';
 import FeaturedStrip from './components/FeaturedStrip';
 import ProductFilters from './components/ProductFilters';
@@ -41,20 +42,15 @@ export const metadata: Metadata = {
 };
 
 type PageProps = {
-  searchParams?: Promise<{
-    category?: string;
-    brand?: string;
-    q?: string;
-    page?: string;
-  }>;
+  searchParams?: SearchParams;
 };
 
 export default async function MarketplacePage({ searchParams }: PageProps) {
-  const resolvedSearchParams = await searchParams;
-  const category = resolvedSearchParams?.category ?? "";
-  const brand = resolvedSearchParams?.brand ?? "";
-  const q = resolvedSearchParams?.q ?? "";
-  const page = Number(resolvedSearchParams?.page ?? 1);
+  const sp = await normalizeSearchParams(searchParams);
+  const category = str(sp.category);
+  const brand = str(sp.brand);
+  const q = str(sp.q);
+  const page = num(sp.page, 1);
 
   return (
     <div className="min-h-screen bg-[#0b0f14] text-white">
