@@ -50,7 +50,7 @@ const Footer = () => {
         { name: "Help Center", href: "/coming-soon" },
         { name: "Contact Us", href: "/coming-soon" },
         { name: "Terms of Service", href: "/coming-soon" },
-        { name: "Privacy Policy", href: "/coming-soon" }
+        { name: "Privacy Policy", href: "/privacy" }
       ]
     },
     {
@@ -71,7 +71,7 @@ const Footer = () => {
         { name: "Instagram", href: "https://instagram.com/chillnow" },
         { name: "Twitter", href: "https://twitter.com/chillnow" },
         { name: "LinkedIn", href: "https://linkedin.com/company/chillnow" },
-        { name: "Email", href: "mailto:hello@chillnow.com", icon: Mail }
+        { name: "Email", href: "mailto:info@chillnow.com", icon: Mail }
       ]
     }
   ];
