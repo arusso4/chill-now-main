@@ -1,0 +1,21 @@
+{"_id":"brand_cannabisco","_type":"brand","name":"Cannabis Co"}
+{"_id":"brand_greenvalley","_type":"brand","name":"Green Valley Labs"}
+
+{"_id":"cat_flower","_type":"category","title":"Flower"}
+{"_id":"cat_edibles","_type":"category","title":"Edibles"}
+{"_id":"cat_drinks","_type":"category","title":"Drinks"}
+{"_id":"cat_accessories","_type":"category","title":"Accessories"}
+
+{"_id":"prod_pink-dream-1","_type":"product","title":"Pink Dream 3.5g","slug":{"_type":"slug","current":"pink-dream-35g"},"brand":{"_type":"reference","_ref":"brand_cannabisco"},"categories":[{"_type":"reference","_ref":"cat_flower"}],"variants":[{"_type":"variant","sku":"PD-35-01","price":38,"size":"3.5g"}],"featured":true,"description":"Top-shelf hybrid with berry notes.","publishedAt":"2025-09-19T12:00:00Z"}
+
+{"_id":"prod_chill-gummies-2","_type":"product","title":"Chill Gummies 100mg","slug":{"_type":"slug","current":"chill-gummies-100mg"},"brand":{"_type":"reference","_ref":"brand_greenvalley"},"categories":[{"_type":"reference","_ref":"cat_edibles"}],"variants":[{"_type":"variant","sku":"CG-100-01","price":22,"size":"100mg"}],"featured":false,"description":"Balanced fruit chews for an easy unwind.","publishedAt":"2025-09-19T12:00:00Z"}
+
+{"_id":"prod_sparkling-mango-3","_type":"product","title":"Sparkling Mango 10mg","slug":{"_type":"slug","current":"sparkling-mango-10mg"},"brand":{"_type":"reference","_ref":"brand_greenvalley"},"categories":[{"_type":"reference","_ref":"cat_drinks"}],"variants":[{"_type":"variant","sku":"SM-10-01","price":6,"size":"12oz / 10mg"}],"featured":true,"description":"Bright, tropical, low-dose beverage.","publishedAt":"2025-09-19T12:00:00Z"}
+
+{"_id":"prod_glass-chill-pipe-4","_type":"product","title":"Glass Chill Pipe","slug":{"_type":"slug","current":"glass-chill-pipe"},"brand":{"_type":"reference","_ref":"brand_cannabisco"},"categories":[{"_type":"reference","_ref":"cat_accessories"}],"variants":[{"_type":"variant","sku":"GCP-001","price":28,"size":"One size"}],"featured":false,"description":"Compact borosilicate glass piece.","publishedAt":"2025-09-19T12:00:00Z"}
+
+{"_id":"drop_chill-limited-sept","_type":"drop","title":"CHILL Limited — September","slug":{"_type":"slug","current":"chill-limited-september"},"startAt":"2025-09-25T17:00:00Z","endAt":"2025-10-02T17:00:00Z","featured":true,"products":[
+  {"_type":"object","product":{"_type":"reference","_ref":"prod_pink-dream-1"},"variantSku":"PD-35-01","price":38,"cap":150},
+  {"_type":"object","product":{"_type":"reference","_ref":"prod_sparkling-mango-3"},"variantSku":"SM-10-01","price":6,"cap":600},
+  {"_type":"object","product":{"_type":"reference","_ref":"prod_chill-gummies-2"},"variantSku":"CG-100-01","price":22,"cap":300}
+]}
