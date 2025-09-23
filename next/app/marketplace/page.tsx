@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import { Metadata } from 'next';
 import { SearchParams, normalizeSearchParams, str, num } from '@/lib/search-params';
-import { getProducts, getFeaturedProducts } from '@/lib/getProducts';
+import { getProducts, getFeaturedProducts, Product } from '@/lib/getProducts';
 import MarketplaceHero from './components/MarketplaceHero';
 import FeaturedStrip from './components/FeaturedStrip';
 import ProductFilters from './components/ProductFilters';
@@ -56,12 +56,78 @@ export default async function MarketplacePage({ searchParams }: PageProps) {
   const q = str(sp.q);
   const page = num(sp.page, 1);
 
-  // Fetch products safely - will return empty array if Sanity is unavailable
-  const [products, featuredProducts] = await Promise.all([
-    getProducts(),
-    getFeaturedProducts()
-  ]);
+  // Fetch products with comprehensive error handling
+  let products: Product[] = [];
+  let featuredProducts: Product[] = [];
+  
+  try {
+    const [fetchedProducts, fetchedFeatured] = await Promise.all([
+      getProducts(),
+      getFeaturedProducts()
+    ]);
+    
+    // Ensure we have arrays even if Sanity returns null/undefined
+    products = Array.isArray(fetchedProducts) ? fetchedProducts : [];
+    featuredProducts = Array.isArray(fetchedFeatured) ? fetchedFeatured : [];
+    
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    // Graceful degradation - continue with empty arrays
+    products = [];
+    featuredProducts = [];
+  }
 
+  // Render empty state if no products
+  if (products.length === 0) {
+    return (
+      <div className="min-h-screen bg-[#0b0f14] text-white">
+        {/* Hero Section */}
+        <section id="hero" aria-labelledby="hero-heading">
+          <MarketplaceHero />
+        </section>
+        
+        {/* Empty State */}
+        <section className="py-20 px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="text-8xl mb-6">🌿</div>
+            <h2 className="text-4xl font-bold text-white mb-4">
+              Marketplace
+            </h2>
+            <p className="text-zinc-400 text-xl mb-8 max-w-2xl mx-auto">
+              No products available yet. Check back soon!
+            </p>
+            
+            {/* Development CTA - only show in non-production */}
+            {process.env.NODE_ENV !== "production" && (
+              <div className="mt-8">
+                <a 
+                  href="/studio"
+                  className="inline-block bg-gradient-to-r from-emerald-500 to-fuchsia-500 hover:from-emerald-600 hover:to-fuchsia-600 text-white rounded-xl px-8 py-4 font-semibold transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
+                >
+                  Add Your First Product
+                </a>
+                <p className="text-sm text-zinc-500 mt-4">
+                  Development mode - this CTA won't show to real users
+                </p>
+              </div>
+            )}
+          </div>
+        </section>
+        
+        {/* CTA Section */}
+        <section id="cta" aria-labelledby="cta-heading">
+          <CTASection />
+        </section>
+        
+        {/* Newsletter CTA */}
+        <section id="newsletter" aria-labelledby="newsletter-heading">
+          <NewsletterCTA />
+        </section>
+      </div>
+    );
+  }
+
+  // Render full marketplace with products
   return (
     <div className="min-h-screen bg-[#0b0f14] text-white">
       {/* Hero Section */}
