@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { urlFor } from "@/lib/sanity.image";
 
 export interface Product {
   _id: string;
@@ -22,30 +23,21 @@ const fmtUSD = (n: number) =>
   new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(n);
 
 function ProductMedia({ image, alt }: { image?: any | null; alt: string }) {
-  // Attempt to use urlFor if available; fallback to placeholder block
-  try {
-    // Lazy import to avoid breaking if the helper doesn't exist
-    // (Cursor will inline/adjust if your project already exports urlFor)
-    // @ts-ignore
-    const { urlFor } = require("@/lib/sanity.image");
-    if (image) {
-      const src = urlFor(image).width(800).height(800).fit("crop").url();
-      if (typeof src === "string" && src.length > 0) {
-        return (
-          <div className="mb-3 aspect-square w-full overflow-hidden rounded-xl bg-black/5">
-            <Image
-              src={src}
-              alt={alt}
-              width={800}
-              height={800}
-              className="h-full w-full object-cover"
-            />
-          </div>
-        );
-      }
+  if (image) {
+    const imgUrl = urlFor(image).width(800).height(800).fit("crop").url();
+    if (imgUrl) {
+      return (
+        <div className="mb-3 aspect-square w-full overflow-hidden rounded-xl bg-black/5">
+          <Image
+            src={imgUrl}
+            alt={alt}
+            width={800}
+            height={800}
+            className="h-full w-full object-cover"
+          />
+        </div>
+      );
     }
-  } catch {
-    // no-op, fall through to placeholder
   }
   return <div className="mb-3 aspect-square w-full rounded-xl bg-black/5" />;
 }

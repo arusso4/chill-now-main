@@ -1,34 +1,42 @@
-import { createClient } from "next-sanity";
+// src/lib/sanity.image.ts
+import imageUrlBuilder from "@sanity/image-url";
 
-// Create a client for image URL generation
-const client = createClient({
-  projectId: process.env.SANITY_PROJECT_ID || process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "",
-  dataset: process.env.SANITY_DATASET || process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
-  apiVersion: process.env.SANITY_API_VERSION || "2024-08-01",
-  useCdn: true, // Use CDN for images
-});
+/**
+ * Use NEXT_PUBLIC_* because this helper is often called from client components.
+ * Do NOT put tokens here.
+ */
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "";
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || "";
 
-// Image URL builder with comprehensive error handling
+// Create the builder only if config is present (prevents build-time crashes)
+const builder = projectId && dataset ? imageUrlBuilder({ projectId, dataset }) : null;
+
+/**
+ * urlFor(source) -> chainable builder or a safe no-op with .url() => ""
+ *
+ * Usage:
+ *   const src = urlFor(image).width(800).height(800).fit("crop").url()
+ */
 export function urlFor(source: any) {
-  if (!source) {
+  if (!builder || !source) {
+    // Return a minimal stub with .url() to keep callers from crashing
     return {
-      width: () => urlFor(null),
-      height: () => urlFor(null),
-      fit: () => urlFor(null),
-      url: () => null,
-    };
+      width: () => ({ height: () => ({ fit: () => ({ url: () => "" }) }) }),
+      height: () => ({ fit: () => ({ url: () => "" }) }),
+      fit: () => ({ url: () => "" }),
+      url: () => "",
+    } as any;
   }
-
   try {
-    return client.image(source);
-  } catch (error) {
-    console.warn("Error creating image URL:", error);
+    return builder.image(source);
+  } catch {
+    // Fallback stub if builder throws on malformed source
     return {
-      width: () => urlFor(null),
-      height: () => urlFor(null),
-      fit: () => urlFor(null),
-      url: () => null,
-    };
+      width: () => ({ height: () => ({ fit: () => ({ url: () => "" }) }) }),
+      height: () => ({ fit: () => ({ url: () => "" }) }),
+      fit: () => ({ url: () => "" }),
+      url: () => "",
+    } as any;
   }
 }
 
