@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import { Metadata } from 'next';
 import { SearchParams, normalizeSearchParams, str, num } from '@/lib/search-params';
+import { getProducts, getFeaturedProducts } from '@/lib/getProducts';
 import MarketplaceHero from './components/MarketplaceHero';
 import FeaturedStrip from './components/FeaturedStrip';
 import ProductFilters from './components/ProductFilters';
@@ -45,12 +46,21 @@ type PageProps = {
   searchParams?: SearchParams;
 };
 
+// Enable ISR with 60 second revalidation
+export const revalidate = 60;
+
 export default async function MarketplacePage({ searchParams }: PageProps) {
   const sp = await normalizeSearchParams(searchParams);
   const category = str(sp.category);
   const brand = str(sp.brand);
   const q = str(sp.q);
   const page = num(sp.page, 1);
+
+  // Fetch products safely - will return empty array if Sanity is unavailable
+  const [products, featuredProducts] = await Promise.all([
+    getProducts(),
+    getFeaturedProducts()
+  ]);
 
   return (
     <div className="min-h-screen bg-[#0b0f14] text-white">
@@ -61,7 +71,7 @@ export default async function MarketplacePage({ searchParams }: PageProps) {
       
       {/* Featured Products Strip */}
       <section id="featured" aria-labelledby="featured-heading">
-        <FeaturedStrip />
+        <FeaturedStrip products={featuredProducts} />
       </section>
       
       {/* Product Filters */}
@@ -74,7 +84,13 @@ export default async function MarketplacePage({ searchParams }: PageProps) {
       {/* Product Grid */}
       <section id="products" aria-labelledby="products-heading">
         <Suspense fallback={null}>
-          <ProductGrid category={category} brand={brand} q={q} page={page} />
+          <ProductGrid 
+            products={products}
+            category={category} 
+            brand={brand} 
+            q={q} 
+            page={page} 
+          />
         </Suspense>
       </section>
       

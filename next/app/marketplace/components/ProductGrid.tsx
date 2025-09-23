@@ -1,143 +1,48 @@
 "use client";
 
 import React from "react";
-import { Product } from "@/lib/foxy";
+import { Product } from "@/lib/getProducts";
 import ProductCard from "./ProductCard";
 
-// Mock data - replace with Sanity data
-const mockProducts: Product[] = [
-  {
-    id: "1",
-    title: "Premium ChillNOW Hoodie",
-    slug: "premium-chillnow-hoodie",
-    brand: "chillNOW",
-    images: ["/placeholder.svg"],
-    categories: ["Merch", "Apparel"],
-    variants: [
-      { sku: "hoodie-s", price: 89, size: "S", inStock: true },
-      { sku: "hoodie-m", price: 89, size: "M", inStock: true },
-      { sku: "hoodie-l", price: 89, size: "L", inStock: false },
-      { sku: "hoodie-xl", price: 89, size: "XL", inStock: true }
-    ],
-    featured: true,
-    description: "Premium quality hoodie with chillNOW branding"
-  },
-  {
-    id: "2",
-    title: "Zen Garden THC Gummies",
-    slug: "zen-garden-thc-gummies",
-    brand: "Zen Garden",
-    images: ["/placeholder.svg"],
-    categories: ["Edibles", "THC"],
-    variants: [
-      { sku: "gummies-10mg", price: 45, size: "10mg", inStock: true },
-      { sku: "gummies-25mg", price: 55, size: "25mg", inStock: true }
-    ],
-    featured: false,
-    description: "Premium THC gummies for relaxation"
-  },
-  {
-    id: "3",
-    title: "CBD Wellness Tincture",
-    slug: "cbd-wellness-tincture",
-    brand: "Pure Relief",
-    images: ["/placeholder.svg"],
-    categories: ["Wellness", "CBD"],
-    variants: [
-      { sku: "tincture-500mg", price: 65, size: "500mg", inStock: true },
-      { sku: "tincture-1000mg", price: 95, size: "1000mg", inStock: true }
-    ],
-    featured: false,
-    description: "High-quality CBD tincture for wellness"
-  },
-  {
-    id: "4",
-    title: "Exclusive Drop Tee",
-    slug: "exclusive-drop-tee",
-    brand: "chillNOW",
-    images: ["/placeholder.svg"],
-    categories: ["Merch", "Apparel"],
-    variants: [
-      { sku: "tee-s", price: 35, size: "S", inStock: true },
-      { sku: "tee-m", price: 35, size: "M", inStock: true },
-      { sku: "tee-l", price: 35, size: "L", inStock: true }
-    ],
-    featured: true,
-    description: "Limited edition t-shirt design"
-  },
-  {
-    id: "5",
-    title: "THC Infused Drinks",
-    slug: "thc-infused-drinks",
-    brand: "Cann Social",
-    images: ["/placeholder.svg"],
-    categories: ["Drinks", "THC"],
-    variants: [
-      { sku: "drink-5mg", price: 25, size: "5mg", inStock: true },
-      { sku: "drink-10mg", price: 30, size: "10mg", inStock: false }
-    ],
-    featured: false,
-    description: "Refreshing THC-infused beverages"
-  },
-  {
-    id: "6",
-    title: "Premium Grinder Set",
-    slug: "premium-grinder-set",
-    brand: "Chill Tools",
-    images: ["/placeholder.svg"],
-    categories: ["Accessories", "Tools"],
-    variants: [
-      { sku: "grinder-set", price: 75, size: "Standard", inStock: true }
-    ],
-    featured: false,
-    description: "High-quality 4-piece grinder set"
-  },
-  {
-    id: "7",
-    title: "CBD Sleep Gummies",
-    slug: "cbd-sleep-gummies",
-    brand: "Dream State",
-    images: ["/placeholder.svg"],
-    categories: ["Wellness", "CBD", "Sleep"],
-    variants: [
-      { sku: "sleep-gummies", price: 40, size: "30 count", inStock: true }
-    ],
-    featured: false,
-    description: "CBD gummies formulated for better sleep"
-  },
-  {
-    id: "8",
-    title: "Limited Edition Beanie",
-    slug: "limited-edition-beanie",
-    brand: "chillNOW",
-    images: ["/placeholder.svg"],
-    categories: ["Merch", "Accessories"],
-    variants: [
-      { sku: "beanie-one-size", price: 28, size: "One Size", inStock: true }
-    ],
-    featured: true,
-    description: "Cozy beanie with embroidered logo"
-  }
-];
 
 type ProductGridProps = {
+  products: Product[];
   category: string;
   brand: string;
   q: string;
   page: number;
 };
 
-export default function ProductGrid({ category, brand, q, page }: ProductGridProps) {
+export default function ProductGrid({ products, category, brand, q, page }: ProductGridProps) {
   const activeCategory = category || "all";
   
-  // Filter products based on category
-  const filteredProducts = activeCategory && activeCategory !== "all" 
-    ? mockProducts.filter(product => 
-        product.categories.some(cat => 
-          cat.toLowerCase().replace(/\s+/g, '-') === activeCategory
-        )
+  // Filter products based on category and search
+  let filteredProducts = products;
+  
+  if (activeCategory && activeCategory !== "all") {
+    filteredProducts = filteredProducts.filter(product => 
+      product.categories.some(cat => 
+        cat.slug.toLowerCase() === activeCategory.toLowerCase()
       )
-    : mockProducts;
+    );
+  }
+  
+  if (brand) {
+    filteredProducts = filteredProducts.filter(product => 
+      product.brand?.slug.toLowerCase() === brand.toLowerCase()
+    );
+  }
+  
+  if (q) {
+    const searchTerm = q.toLowerCase();
+    filteredProducts = filteredProducts.filter(product => 
+      product.title.toLowerCase().includes(searchTerm) ||
+      product.brand?.title.toLowerCase().includes(searchTerm) ||
+      product.categories.some(cat => 
+        cat.title.toLowerCase().includes(searchTerm)
+      )
+    );
+  }
 
   return (
     <section className="py-16 px-4">
@@ -158,10 +63,42 @@ export default function ProductGrid({ category, brand, q, page }: ProductGridPro
         {filteredProducts.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {filteredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <ProductCard key={product._id} product={product} />
             ))}
           </div>
+        ) : products.length === 0 ? (
+          // Empty marketplace state - no products at all
+          <div className="text-center py-20">
+            <div className="max-w-md mx-auto">
+              <div className="text-8xl mb-6">🌿</div>
+              <h3 className="text-3xl font-bold text-white mb-4">
+                Welcome to the Marketplace
+              </h3>
+              <p className="text-zinc-400 text-lg mb-8 leading-relaxed">
+                We're curating the best cannabis products and exclusive merch. 
+                Check back soon for our first drops!
+              </p>
+              <div className="space-y-4">
+                <a 
+                  href="/studio"
+                  className="inline-block bg-gradient-to-r from-emerald-500 to-fuchsia-500 hover:from-emerald-600 hover:to-fuchsia-600 text-white rounded-xl px-8 py-4 font-semibold transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
+                >
+                  Add Your First Product
+                </a>
+                <div className="text-sm text-zinc-500">
+                  <p>Want to be notified when we launch?</p>
+                  <a 
+                    href="#newsletter" 
+                    className="text-emerald-400 hover:text-emerald-300 underline"
+                  >
+                    Join our waitlist
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         ) : (
+          // No products match current filters
           <div className="text-center py-16">
             <div className="text-6xl mb-4">🔍</div>
             <h3 className="text-2xl font-semibold text-white mb-2">
