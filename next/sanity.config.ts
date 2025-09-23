@@ -6,11 +6,14 @@ import brand from "./sanity/schemas/brand";
 import category from "./sanity/schemas/category";
 import drop from "./sanity/schemas/drop";
 
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!;
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || "production";
+
 export default defineConfig({
   name: "chillnow-studio",
   title: "chillNOW Studio",
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!, // set later
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
+  projectId,
+  dataset,
   plugins: [deskTool()],
   schema: { types: [product, variant, brand, category, drop] },
 });
